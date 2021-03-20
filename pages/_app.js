@@ -17,6 +17,11 @@ const theme = extendTheme({
     }
   },
   components: {
+    Button: {
+      baseStyle: {
+        fontWeight: 400,
+      }
+    },
     Heading: {
       baseStyle: {
         fontFamily: 'Radio Grotesk',
