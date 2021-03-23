@@ -1,7 +1,12 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import Layout from '../components/layout'
 import Container from '../components/container'
 import { Box, ButtonGroup, Button, VStack, Heading, Text, SimpleGrid } from '@chakra-ui/react'
+import {motion} from 'framer-motion'
+import { fadeUpIn } from '../src/utils/framer-variants'
+
+const MotionHeading = motion(Heading)
 
 export default function Home() {
   return (
@@ -10,12 +15,14 @@ export default function Home() {
         <title>Testing</title>
       </Head>
       <Container>
-        <VStack textAlign="center" py="5rem" spacing="1rem">
-          <Heading size="xs">BRAND DESIGN AGENCY</Heading>
-          <Heading size="lg" as="h1">Data-driven design strategy that makes your company more profitable</Heading>
+        <VStack textAlign="center" py="5rem" spacing="1rem" minH="calc(100vh - 72px * 2)" justify="center">
+          <MotionHeading size="xs">BRAND DESIGN AGENCY</MotionHeading>
+          <MotionHeading size="2xl" as="h1">Data-driven design strategy that makes your company more profitable</MotionHeading>
           <Text fontSize="lg">Generate more leads, transactions, or what ever KPI's matter to you.</Text>
           <ButtonGroup>
-            <Button>Explore Case Studies</Button>
+            <Link href="/work" passHref>
+              <Button as="a" variant="primary" size="lg">Explore Case Studies</Button>
+            </Link>
           </ButtonGroup>
         </VStack>
       </Container>

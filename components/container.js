@@ -1,9 +1,9 @@
 import { Box } from '@chakra-ui/react'
 
-export default function Container({children}){
+export default function Container(props){
   return (
-  <Box px="1.5rem" maxW="100rem" mx="auto">
-    {children}
+  <Box px="1.5rem" maxW="100rem" mx="auto" {...props}>
+    {props.children}
   </Box>
   )
 }
