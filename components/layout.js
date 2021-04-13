@@ -2,6 +2,7 @@ import Header from "./header";
 import Footer from './footer'
 import { Box } from '@chakra-ui/react'
 
+import Head from 'next/head'
 export default function Layout({children}) {
   return (
     <>

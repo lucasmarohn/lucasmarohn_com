@@ -1,8 +1,20 @@
+@font-face {
+  font-family: "Marcin Antique";
+  font-weight: 600;
+  src: url("../public/fonts/MarcinAntiqueTrial-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Marcin Antique";
+  font-weight: 100 400;
+  src: url("../public/fonts/MarcinAntiqueTrial-Light.woff") format("woff");
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: "Marcin Antique", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
@@ -14,3 +26,4 @@ a {
 * {
   box-sizing: border-box;
 }
+

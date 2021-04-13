@@ -7,6 +7,7 @@ import { SimpleGrid, Stat, StatLabel, StatNumber, StatArrow, Box, HStack, VStack
 import { motion } from 'framer-motion'
 import { fadeDownIn } from '../../src/utils/framer-variants'
 import Testimonial from '../../components/testimonial'
+import Stats from '../../components/blocks/stats'
 
 const MotionBox = motion(Box)
 const MotionHeading = motion(Heading)
@@ -22,8 +23,8 @@ export default function KeriSystems() {
         <title>Mutt Couture</title>
       </Head>
 
-      <MotionBox as="article" w="100%" layoutId={`cs-card-${layoutIdSuffix}`}>
-        <MotionBox bgImage={`url(${thumbSrc})`} layoutId={`cs-thumb-${layoutIdSuffix}`} borderTopRadius="0" overflow="hidden">
+      <MotionBox as="article" w="100%" layoutId={`cs-card-${layoutIdSuffix}`} >
+        <MotionBox bgImage={`url(${thumbSrc})`} layoutId={`cs-thumb-${layoutIdSuffix}`} borderTopRadius="0" maxH="100vh" overflow="hidden">
           <AspectRatio ratio={3 / 4}>
             <Image src={thumbSrc} layout="fill" objectFit="cover" unoptimized={false} />
           </AspectRatio>
@@ -37,22 +38,12 @@ export default function KeriSystems() {
 
       <Container my="3rem" className="blocks">
         <VStack spacing="5rem">
-        <VStack spacing="1rem" w="100%">
-          <Heading as="h2" size="sm" w="100%">Lifting KPI's Accross the Board</Heading>
-          <SimpleGrid columns={[2]} gap={5} w="100%">
-            <Stat>
-              <StatLabel>Lead Increase</StatLabel>
-              <StatNumber><StatArrow type="increase" />800%</StatNumber>
-            </Stat>
 
-            <Stat>
-              <StatLabel>Form Submissions</StatLabel>
-              <StatNumber><StatArrow type="increase" />400%</StatNumber>
-            </Stat>
+          <Stats statData={[
+            {title: 'Lead Increase', value: 800, suffix: '%'},
+            {title: 'Form Submissions', value: 400, suffix: '%'},
+          ]}/>
 
-          </SimpleGrid>
-          <Text fontSize="sm" w="100%">Measured 1 month post-launch</Text>
-        </VStack>
           <Testimonial image="/images/work/kerisys/thumb.png" author="Chris Hudson" title="Marketing at Keri Systems" quote="Mate. This week has been absolutely mental. My inbox has surpassed like 100/day. Every 20 mins we're getting a touch-point with someone." />
         </VStack>
       </Container>

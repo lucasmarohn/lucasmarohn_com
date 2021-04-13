@@ -1,9 +1,8 @@
 import { ChakraProvider, extendTheme, useColorModeValue } from "@chakra-ui/react";
 import { AnimateSharedLayout } from 'framer-motion'
+import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
-
-
   return (
     <ChakraProvider theme={theme}>
       <AnimateSharedLayout>
@@ -23,10 +22,17 @@ const theme = extendTheme({
   colors: {
     brand: {
       primary: {
-        100: "rgba(112, 90, 255, 1)",
-        300: "rgba(72, 50, 211, 0.75)",
-        400: "rgba(72, 50, 211, 1)",
+        100: "#9E90F5",
+        300: "#877AEC",
+        400: "#6C5DD2",
       },
+
+    },
+    gray: {
+      600: '#242832',
+      700: '#1F2027',
+      800: '#181A21',
+      900: '#14161C',
     },
     white: {
       100: "rgba(255,255,255,1)",
@@ -34,13 +40,26 @@ const theme = extendTheme({
       30: "rgba(255,255,255,.3)",
     }
   },
+  styles: {
+    global: ({colorMode})=> ({
+      "html, body": {
+        fontFamily: 'Marcin Antique, Segoe UI, Roboto',
+        bg: ''
+      }
+    })
+  },
+  
   components: {
     Button: {
       baseStyle: ({colorMode})=> ({
-        fontFamily: "Radio Grotesk",
+        fontFamily: "Marcin Antique, Radio Grotesk",
         fontWeight: 400,
         letterSpacing: '.03em',
         textShadow: colorMode === "light" ? 'none' : '1px 1px 2px rgba(0,0,0,.3)',
+        borderTop: '2px solid',
+        borderBottom: '2px solid',
+        borderTopColor: colorMode === "light" ? 'brand.primary.100' : 'gray.500',
+        borderBottomColor: colorMode === "light" ? 'brand.primary.300' : 'gray.800',
         _active: {
           transform: "scale(.95)",
         }
@@ -50,14 +69,19 @@ const theme = extendTheme({
           bg: colorMode === "light" ? "brand.primary.100" : "brand.primary.300",
           color: "white",
           boxShadow: "0 1rem 2rem rgba(72, 50, 211, 0.35)",
-          background: "linear-gradient(45deg, rgba(112, 90, 255, 1), rgba(72, 50, 211, 1))",
+          bgGradient: "linear-gradient(45deg, brand.primary.300, brand.primary.400)",
+          borderTop: '2px solid',
+          borderBottom: '2px solid',
+          borderTopColor: 'brand.primary.100',
+          borderBottomColor: 'brand.primary.300',
           _hover: {
-            bg: colorMode === "light" ? "linear-gradient(45deg, rgba(112, 90, 255, 1), rgba(72, 50, 211, 1))" : "linear-gradient(45deg, rgba(112, 90, 255, 1), rgba(72, 50, 211, 1))",
+            bgGradient: colorMode === "light" ? "linear-gradient(45deg, brand.primary.300, brand.primary.400)" : "linear-gradient(45deg, brand.primary.300, brand.primary.400)",
           }
         }),
         tertiary: ({colorMode}) => ({
           bg: colorMode === "light" ? "gray.200" : "gray.700",
           color: colorMode === "light" ? "gray.700" : "white",
+
           _hover: {
             bg: colorMode === "light" ? "gray.300" : "gray.600",
           }
@@ -72,8 +96,9 @@ const theme = extendTheme({
     },
     Heading: {
       baseStyle: {
-        fontFamily: 'Radio Grotesk',
-        fontWeight: "bold"
+        fontFamily: '"Marcin Antique"',
+        fontWeight: "bold",
+        width: "100%"
       },
       sizes: {
         xs: (props) => ({
