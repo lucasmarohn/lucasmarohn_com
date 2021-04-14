@@ -44,7 +44,6 @@ const theme = extendTheme({
     global: ({colorMode})=> ({
       "html, body": {
         fontFamily: 'Marcin Antique, Segoe UI, Roboto',
-        bg: ''
       }
     })
   },
@@ -91,6 +90,7 @@ const theme = extendTheme({
     Text: {
       baseStyle: ({colorMode}) => ({
         fontWeight: 400,
+        fontSize: '18px',
         color: colorMode === "light" ? "gray.600" : "gray.300"
       })
     },
@@ -99,6 +99,19 @@ const theme = extendTheme({
         fontFamily: '"Marcin Antique"',
         fontWeight: "bold",
         width: "100%"
+      },
+      variants: {
+        h2: {
+          fontSize: ['28px', '32px', '36px', '48px'],
+          lineHeight: '120%'
+        },
+        h6: (props) => ({
+          fontWeight: 400,
+          letterSpacing: '.2em',
+          color: props.colorMode === "light" ? "brand.primary.300" : "brand.primary.100",
+          fontSize: "md",
+          textTransform: 'uppercase',
+        })
       },
       sizes: {
         xs: (props) => ({

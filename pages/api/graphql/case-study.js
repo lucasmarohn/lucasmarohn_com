@@ -47,6 +47,9 @@ export async function getCaseStudyData(slug, preview) {
       project(id: $pageId, idType: SLUG) {
         id
         uri
+        title
+        slug
+        databaseId
         acf_project {
           headline
           contentSections {
