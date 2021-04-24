@@ -15,12 +15,13 @@ import {
 import { motion } from "framer-motion";
 import CaseStudyItem from "../components/case-study-item";
 import { fadeUpIn } from "../src/utils/framer-variants";
+import { getCaseStudyList } from "./api/graphql/case-study";
 
 const MotionHeading = motion(Heading);
 const MotionCaseStudyItem = motion(CaseStudyItem);
 const MotionBox = motion(Box);
 
-export default function Home() {
+export default function Work({caseStudyList}) {
   return (
     <Layout>
       <Head>
@@ -49,38 +50,43 @@ export default function Home() {
           </MotionHeading>
         </VStack>
         </Container>
-        <Container px={[null, null, "0"]} maxW="none">
+        <Container>
         <Grid
           templateColumns={["100%"]}
           alignItems="stretch"
           w="100%"
-          gap={[10, null, '0']}
+          gap={[10, null, 20]}
         >
-          <CaseStudyItem
-            animate="visible"
-            variants={fadeUpIn}
-            transition={{ ease: "easeOut", duration: 0.5, delay: 0.2 }}
-            layoutIdSuffix="mc"
-            title="Mutt Couture"
-            intro="Redefining a Wholesale Pet Company as a Luxury DTC Brand"
-            link="/work/mutt-couture"
-            thumbURL="/images/work/mutt-couture/glass.png"
-          />
 
-          <CaseStudyItem
-            animate="visible"
-            variants={fadeUpIn}
-            transition={{ ease: "easeOut", duration: 0.5, delay: 0.3 }}
-            layoutIdSuffix="keri"
-            title="Keri Systems"
-            intro="A rebrand resulting in an 800% Increase in qualified leads in the first 30 days"
-            link="/work/keri-systems"
-            thumbURL="/images/work/kerisys/thumb.png"
-            reverse
-          />
+          {caseStudyList && caseStudyList.map(({item}, index) => 
+            <CaseStudyItem
+              key={item.databaseId}
+              animate="visible"
+              variants={fadeUpIn}
+              headline={item.acf_project.headline}
+              transition={{ ease: "easeOut", duration: 0.5, delay: 0.2 }}
+              layoutIdSuffix={item.databaseId}
+              title={item.title}
+              intro={item.excerpt}
+              link={`/work/${item.slug}`}
+              thumbImage={item?.featuredImage?.node}
+              reverse={index % 2}
+              layout="position"
+            />
+          )}
         </Grid>
         </Container>
       
     </Layout>
   );
+}
+
+export async function getStaticProps(context, preview) {
+  const caseStudyList = await getCaseStudyList()
+  return {
+    props: {
+      caseStudyList
+    }
+  }
+
 }

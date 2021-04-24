@@ -9,14 +9,11 @@ import {
   VStack,
   Heading,
   Grid,
-  Text,
   AspectRatio,
-  Button,
   useColorModeValue,
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import Wysiwyg from "./partials/wysiwyg";
 import WPImage from "./partials/wp-image";
 
 const MotionHeading = motion(Heading);

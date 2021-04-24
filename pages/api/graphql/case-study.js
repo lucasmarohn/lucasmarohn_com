@@ -1,29 +1,5 @@
-const API_URL = process.env.WORDPRESS_API_URL;
-async function fetchAPI(query, { variables } = {}) {
-  const headers = { "Content-Type": "application/json" };
-
-  if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
-    headers[
-      "Authorization"
-    ] = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
-  }
-
-  const res = await fetch(API_URL, {
-    method: "POST",
-    headers,
-    body: JSON.stringify({
-      query,
-      variables,
-    }),
-  });
-
-  const json = await res.json();
-  if (json.errors) {
-    console.error(json.errors);
-    throw new Error("Failed to fetch API");
-  }
-  return json.data;
-}
+import { fetchAPI } from './fetch-api'
+import { imageFragment } from './fragments/case-study'
 
 export async function getAllCaseStudyURI() {
   const data = await fetchAPI(`
@@ -37,8 +13,34 @@ export async function getAllCaseStudyURI() {
       }
     }
   `);
-  console.log(data.projects)
   return data?.projects;
+}
+
+
+export async function getCaseStudyList() {
+  const data = await fetchAPI(`
+    query AllPages {
+      projects(first: 10000) {
+        edges {
+          item: node {
+            title
+            databaseId
+            slug
+            acf_project {
+              headline
+            }
+            excerpt
+            featuredImage {
+              node {
+                ${imageFragment}
+              } 
+            }
+          }
+        }
+      }
+    }
+  `);
+  return data?.projects.edges;
 }
 
 export async function getCaseStudyData(slug, preview) {
@@ -52,6 +54,11 @@ export async function getCaseStudyData(slug, preview) {
         databaseId
         acf_project {
           headline
+          animation
+          fieldGroupName
+          poster {
+            ${imageFragment}
+          }
           contentSections {
             ... on Project_AcfProject_ContentSections_BasicText {
               backgroundColor
@@ -62,13 +69,7 @@ export async function getCaseStudyData(slug, preview) {
             ... on Project_AcfProject_ContentSections_FullWidthImage {
               fieldGroupName
               fullWidthImage {
-                altText
-                srcSet
-                sourceUrl
-                mediaDetails {
-                  width
-                  height
-                }
+                ${imageFragment}
               }
             }
             ... on Project_AcfProject_ContentSections_TwoColumn {
@@ -85,53 +86,31 @@ export async function getCaseStudyData(slug, preview) {
               maxColumns
               singleColumn {
                 ... on Project_AcfProject_ContentSections_Columns_SingleColumn_Video {
+                  fieldGroupName
                   colAspectRatio
                   colVideoContent
                   colVideoCover {
-                    altText
-                    sourceUrl
-                    mediaDetails {
-                      height
-                      width
-                    }
+                    ${imageFragment}
                   }
                   colVideoMp4 {
-                    altText
-                    sourceUrl
+                    ${imageFragment}
                   }
-                  fieldGroupName
+                  
                 }
                 ... on Project_AcfProject_ContentSections_Columns_SingleColumn_ColImage {
                   fieldGroupName
                   colImageContent {
-                    altText
-                    sourceUrl
-                    srcSet
-                    mediaDetails {
-                      height
-                      width
-                    }
+                    ${imageFragment}
                   }
                 }
                 ... on Project_AcfProject_ContentSections_Columns_SingleColumn_ColWysiwyg {
-                  colWysiwygContent
                   fieldGroupName
+                  colWysiwygContent
                 }
               }
             }
             ... on Project_AcfProject_ContentSections_Team {
               fieldGroupName
-            }
-          }
-          animation
-          fieldGroupName
-          poster {
-            altText
-            srcSet
-            sourceUrl
-            mediaDetails {
-              width
-              height
             }
           }
         }
@@ -143,6 +122,5 @@ export async function getCaseStudyData(slug, preview) {
       },
     }
   )
-  console.log('data', data)
   return data.project
 }

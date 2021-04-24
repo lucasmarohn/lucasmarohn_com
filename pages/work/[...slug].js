@@ -5,9 +5,9 @@ import {
 
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
 import Layout from "../../components/layout";
 import Container from "../../components/container";
+import SectionWrap from '../../components/partials/section-wrap'
 import {
   useColorModeValue,
   Box,
@@ -19,20 +19,39 @@ import {
 } from "@chakra-ui/react";
 
 import { motion } from "framer-motion";
-import { fadeDownIn } from "../../src/utils/framer-variants";
+import { fadeUpIn } from "../../src/utils/framer-variants";
 import Testimonial from "../../components/testimonial";
 import Stats from "../../components/blocks/stats";
-import { BiColumns } from "react-icons/bi";
-import Wysiwyg from "../../components/partials/wysiwyg";
+import BasicText from "../../components/blocks/basic-text";
+import Columns from "../../components/blocks/columns";
+import FullWidthImage from "../../components/blocks/full-width-image";
+
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
-const MotionImage = motion(Image);
 
 export default function CaseStudy({ data }) {
-  const layoutIdSuffix = data.slug;
+  const layoutIdSuffix = data.databaseId;
   const bgColor = useColorModeValue("white", "gray.700");
+
+  const switchSection = (section) => {
+    switch (section.fieldGroupName) {
+      case "Project_AcfProject_ContentSections_BasicText":
+        return <BasicText text={section.basicText} />;
+      case "Project_AcfProject_ContentSections_Columns":
+        return (
+          <Columns
+            maxColumns={section.maxColumns}
+            columns={section.singleColumn}
+          />
+        );
+      case "Project_AcfProject_ContentSections_FullWidthImage":
+        return <FullWidthImage image={section.fullWidthImage} />;
+      default:
+        return <Box>{section.fieldGroupName}</Box>;
+    }
+  };
   return (
     <Layout>
       <Head>
@@ -46,7 +65,7 @@ export default function CaseStudy({ data }) {
         bg={bgColor}
       >
         <Grid
-          templateColumns={["100%", null, null, "1fr 1fr"]}
+          templateColumns={["100%"]}
           alignItems="center"
           gap={["2rem", null, 10]}
         >
@@ -55,7 +74,7 @@ export default function CaseStudy({ data }) {
             borderTopRadius="0rem"
           >
             <AspectRatio
-              ratio={[3 / 4, null, 3 / 4]}
+              ratio={[16 / 9, null, 16 / 9]}
               bg="gray.100"
               maxH="80vh"
               overflow="hidden"
@@ -68,7 +87,13 @@ export default function CaseStudy({ data }) {
               />
             </AspectRatio>
           </MotionBox>
-          <VStack
+          
+        </Grid>
+      </MotionBox>
+
+
+      <SectionWrap>
+        <VStack
             p="1rem 5rem 1rem 1rem"
             maxW={[null, null, "40rem"]}
             marginX={[null, null, "auto"]}
@@ -79,7 +104,6 @@ export default function CaseStudy({ data }) {
           >
             <VStack>
               <MotionHeading
-                layoutId={`cs-title-${layoutIdSuffix}`}
                 size="sm"
                 w="100%"
                 fontWeight="400"
@@ -92,8 +116,7 @@ export default function CaseStudy({ data }) {
               </MotionHeading>
               <MotionHeading
                 as="h1"
-                layoutId={`cs-subtitle-${layoutIdSuffix}`}
-                variants={fadeDownIn}
+                variants={fadeUpIn}
                 initial="hidden"
                 animate="visible"
                 transition={{ delay: 0.05, duration: 0.25 }}
@@ -114,8 +137,7 @@ export default function CaseStudy({ data }) {
               bg={useColorModeValue("gray.100", "gray.800")}
             />
           </VStack>
-        </Grid>
-      </MotionBox>
+        </SectionWrap>
 
       <VStack spacing="5rem">
         <Box
@@ -137,51 +159,12 @@ export default function CaseStudy({ data }) {
           </Container>
         </Box>
 
-        {data.acf_project.contentSections.map((section) => {
-          switch (section.fieldGroupName) {
-            case "Project_AcfProject_ContentSections_BasicText":
-              return (
-                <Container maxW="60rem" mx="auto">
-                <Box>
-                  <Wysiwyg
-                    html={section.basicText}
-                  />
-                </Box>
-                </Container>
-              );
-            case "Project_AcfProject_ContentSections_Columns":
-              return (
-                <Container>
-                  <Grid
-                    templateColumns={`repeat(${section.maxColumns ?? section.singleColumn.length}, 1fr)`}
-                    w="100%"
-                    gap={['2rem']}
-                  >
-                    {section.singleColumn.map((singleCol) => {
-                      switch (singleCol.fieldGroupName) {
-                        case "Project_AcfProject_ContentSections_Columns_SingleColumn_ColImage":
-                          return (
-                            <Image
-                              src={singleCol.colImageContent.sourceUrl}
-                              srcSet={singleCol.colImageContent.srcSet}
-                              width={singleCol.colImageContent.mediaDetails.width}
-                              height={
-                                singleCol.colImageContent.mediaDetails.height
-                              }
-                            />
-                          );
-                        case "Project_AcfProject_ContentSections_Columns_SingleColumn_ColWysiwyg":
-                          return <Box><Wysiwyg html={singleCol.colWysiwygContent}/></Box>
-                        default:
-                          return <Box>SingleCol: {singleCol.fieldGroupName}</Box>;
-                      }
-                    })}
-                  </Grid>
-                </Container>
-              );
-            default:
-              return <Box>{section.fieldGroupName}</Box>;
-          }
+        {data.acf_project.contentSections.map((section, index) => {
+          return (
+            <SectionWrap key={[section, index]}>
+              {switchSection(section)}
+            </SectionWrap>
+          );
         })}
       </VStack>
     </Layout>
