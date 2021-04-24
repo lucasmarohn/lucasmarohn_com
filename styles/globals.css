@@ -14,8 +14,9 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Marcin Antique", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: "Marcin Antique", -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
 }
 
 a {
@@ -27,3 +28,47 @@ a {
   box-sizing: border-box;
 }
 
+.word-container {
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  
+}
+
+.word-container   .word {
+  display: block;
+  transform: translateY(110%) skew(0, 5deg);
+  animation: slideup 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: var(--i);
+  line-height: 125%;
+}
+
+@keyframes slideup {
+  0% {
+    transform: translateY(110%) skew(0, 5deg);
+  }
+  100% {
+    transform: translateY(0%) skew(0, 0);
+  }
+}
+@keyframes fadein {
+  0% {
+    opacity: 0;
+    transform: translateY(5rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes wordspacing {
+  0% {
+    word-spacing: 0em;
+    opacity: 0;
+  }
+  100% {
+    word-spacing: 0.15em;
+    opacity: 1;
+  }
+}

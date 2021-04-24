@@ -15,6 +15,8 @@ import {
 
 import { fetchAPI } from "../pages/api/graphql/fetch-api";
 import { gravityFormData } from "../pages/api/graphql/contact-form";
+import Hero from "../components/blocks/hero";
+import SectionWrap from "../components/partials/section-wrap";
 
 
 export default function Contact({ gFormData }) {
@@ -30,6 +32,7 @@ export default function Contact({ gFormData }) {
             name={`input_${field.id}`}
             id={`input_${field.id}`}
             type={field.type}
+            size="lg"
             bg="white"
           />
         );
@@ -39,6 +42,7 @@ export default function Contact({ gFormData }) {
             name={`input_${field.id}`}
             id={`input_${field.id}`}
             type={field.type}
+            size="lg"
             bg="white"
           />
         );
@@ -69,19 +73,12 @@ export default function Contact({ gFormData }) {
       <Head>
         <title>Testing</title>
       </Head>
-      <Container maxW="800">
-        <VStack textAlign="center" py="5rem" spacing="1rem">
-          <Heading size="xs">BRAND DESIGN AGENCY</Heading>
-          <Heading size="xl" as="h1">
-            Data-driven design strategy that makes your company more profitable
-          </Heading>
-          <Text fontSize="xl" maxW="700">
-            Generate more leads, transactions, or what ever KPI's matter to you.
-          </Text>
-        </VStack>
-      </Container>
+
+
+      <Hero headline="START A CONVERSATION" title="Let's build something beatiful together" />
 
       {fields && (
+        <SectionWrap my="0">
         <Container maxW="70rem">
           <Box bg="white" padding={['2rem', '5rem']}>
           {!formSubmitted && <form
@@ -109,6 +106,7 @@ export default function Contact({ gFormData }) {
           {formSubmitted && <Box textAlign="center">Thanks for reaching out. Your message has been sent successfully.</Box>}
           </Box>
         </Container>
+        </SectionWrap>
       )}
       
     </Layout>

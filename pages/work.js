@@ -1,25 +1,16 @@
 import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
 import Layout from "../components/layout";
 import Container from "../components/container";
 import {
-  Box,
-  LinkOverlay,
-  VStack,
-  Heading,
-  Text,
-  AspectRatio,
   Grid,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import CaseStudyItem from "../components/case-study-item";
-import { fadeUpIn } from "../src/utils/framer-variants";
+import { fadeUpIn, fadeUpOut } from "../src/utils/framer-variants";
 import { getCaseStudyList } from "./api/graphql/case-study";
+import SectionWrap from '../components/partials/section-wrap'
 
-const MotionHeading = motion(Heading);
-const MotionCaseStudyItem = motion(CaseStudyItem);
-const MotionBox = motion(Box);
+import Hero from '../components/blocks/hero'
 
 export default function Work({caseStudyList}) {
   return (
@@ -27,29 +18,12 @@ export default function Work({caseStudyList}) {
       <Head>
         <title>Testing</title>
       </Head>
-      <Container>
-        <VStack textAlign="center" py={["3rem", '5rem', '7.5rem']}>
-          <MotionHeading
-            size="xs"
-            initial="hidden"
-            animate="visible"
-            variants={fadeUpIn}
-            transition={{ ease: "easeOut", duration: 0.5, delay: 0 }}
-          >
-            WORK
-          </MotionHeading>
-          <MotionHeading
-            size="xl"
-            as="h1"
-            variants={fadeUpIn}
-            transition={{ ease: "easeOut", duration: 0.5, delay: 0.2 }}
-            initial="hidden"
-            animate="visible"
-          >
-            Case Studies
-          </MotionHeading>
-        </VStack>
-        </Container>
+      <AnimatePresence exitBeforeEnter>
+      <Hero
+        maxW="900"
+        headline="PAST PROJECTS"
+        title="Case Studies"
+      />
         <Container>
         <Grid
           templateColumns={["100%"]}
@@ -59,6 +33,7 @@ export default function Work({caseStudyList}) {
         >
 
           {caseStudyList && caseStudyList.map(({item}, index) => 
+          <SectionWrap my="0">
             <CaseStudyItem
               key={item.databaseId}
               animate="visible"
@@ -71,12 +46,13 @@ export default function Work({caseStudyList}) {
               link={`/work/${item.slug}`}
               thumbImage={item?.featuredImage?.node}
               reverse={index % 2}
-              layout="position"
             />
+            </SectionWrap>
           )}
         </Grid>
+       
         </Container>
-      
+        </AnimatePresence>
     </Layout>
   );
 }

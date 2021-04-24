@@ -19,70 +19,32 @@ const MotionText = motion(Text);
 const MotionButtonGroup = motion(ButtonGroup);
 const MotionBox = motion(Box)
 
+import {splitText, printSpans} from '../src/utils/helpers'
+
+import Hero from '../components/blocks/hero'
+
 export default function Home() {
   return (
     <Layout>
       <Head>
         <title>Testing</title>
       </Head>
-
-      <Container>
-        <VStack
-          textAlign="center"
-          py="5rem"
-          spacing={["1rem", null, "2rem"]}
-          minH={["calc(100vh - 72px * 2)", "50vh"]}
-          maxW="700px"
-          mx="auto"
-          justify="center"
-        >
-          <MotionHeading
-            size="xs"
-            variants={fadeUpIn}
-            transition={{ ease: "easeOut", duration: 0.5, delay: 0 }}
-            initial="hidden"
-            animate="visible"
-          >
-            WELCOME TO OUR CONSCIOUS
-          </MotionHeading>
-          <MotionHeading
-            size="2xl"
-            as="h1"
-            variants={fadeUpIn}
-            transition={{ ease: "easeOut", duration: 0.5, delay: 0.2 }}
-            initial="hidden"
-            animate="visible"
-          >
-            Data-driven design strategy that makes your company more profitable
-          </MotionHeading>
-          <MotionText
-            fontSize="lg"
-            variants={fadeUpIn}
-            transition={{ ease: "easeOut", duration: 0.5, delay: 0.4 }}
-            initial="hidden"
-            animate="visible"
-          >
-            Generate more leads, transactions, or what ever KPI's matter to you.
-          </MotionText>
-          <MotionButtonGroup
-            variants={fadeUpIn}
-            transition={{ ease: "easeOut", duration: 0.5, delay: 0.6 }}
-            initial="hidden"
-            animate="visible"
-          >
-            <Link href="/work" passHref>
-              <Button as="a" variant="primary" size="lg">
-                Explore Case Studies
-              </Button>
-            </Link>
-          </MotionButtonGroup>
-        </VStack>
-      </Container>
+      <Hero
+        minH={["calc(100vh - 72px * 2)", "50vh"]}
+        maxW="1200"
+        headline="WELCOME TO OUR CONSCIOUS"
+        title="Your product exceeds your customers needs, your message should too."
+        description="Use empathy, design, and storytelling to enable your brand to speak to your audience with authenticity and resonance."
+        button={{
+          label: 'Explore Case Studies',
+          href: '/work'
+        }}
+      />
 
       <Box>
         <Container>
-          <SimpleGrid columns={[1, null, null, 2, 4]} gap="3rem">
-            <VStack>
+          <SimpleGrid columns={[1, null, null, 2, 4]} gap="2rem">
+            <VStack spacing="1rem">
               <Heading size="lg">
                 Empathize with the emotional needs of your customers
               </Heading>
@@ -92,7 +54,7 @@ export default function Home() {
                 day.
               </Text>
             </VStack>
-            <VStack>
+            <VStack spacing="1rem">
               <Heading size="lg">
                 Identify the best channels for your unique business goals
               </Heading>
@@ -101,7 +63,7 @@ export default function Home() {
                 if you have an idea of what the solution looks like.
               </Text>
             </VStack>
-            <VStack>
+            <VStack spacing="1rem">
               <Heading size="lg">
                 Discover where your business and customer needs intersect
               </Heading>
@@ -110,7 +72,7 @@ export default function Home() {
                 customer overlap. We focus our efforts where it matters.
               </Text>
             </VStack>
-            <VStack>
+            <VStack spacing="1rem">
               <Heading size="lg">
                 Iterate and amplify strategies that deliver the best results
               </Heading>

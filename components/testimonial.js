@@ -3,7 +3,7 @@ import { Box, VStack, HStack, Image, Text, Heading, useColorModeValue } from '@c
 export default function Testimonial({quote, author, title, image, bg, backgroundColor}){
   return (
     <VStack w="100%" spacing="1rem">
-    <Text fontSize="xl" as="blockquote" bg={bg ?? backgroundColor ?? useColorModeValue("gray.100", "gray.700")} borderRadius="1rem" borderBottomLeftRadius="0" p="1.5rem" w="100%">
+    <Text fontSize="xl" as="blockquote" bg={bg ?? backgroundColor ?? useColorModeValue("gray.100", "gray.900")} borderRadius="1rem" borderBottomLeftRadius="0" p="1.5rem" w="100%">
       {quote}
     </Text>
     <HStack w="100%" spacing="1rem">

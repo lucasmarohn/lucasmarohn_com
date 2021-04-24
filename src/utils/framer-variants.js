@@ -1,11 +1,20 @@
 export const fadeUpIn = {
   hidden: {
     opacity: 0,
-    transform: "translateY(25px)"
+    y: 100,
+    scale: 0.98
   },
   visible: {
     opacity: 1,
-    transform: "translateY(0px)"
+    y: 0,
+    scale: 1,
+  }
+}
+
+export const fadeUpOut = {
+  exit: {
+    opacity: 0,
+    transform: "translateY(-25px)"
   }
 }
 

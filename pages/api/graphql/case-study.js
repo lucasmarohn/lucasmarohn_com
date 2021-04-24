@@ -52,6 +52,11 @@ export async function getCaseStudyData(slug, preview) {
         title
         slug
         databaseId
+        featuredImage {
+          node {
+            ${imageFragment}
+          }
+        }
         acf_project {
           headline
           animation
@@ -93,7 +98,11 @@ export async function getCaseStudyData(slug, preview) {
                     ${imageFragment}
                   }
                   colVideoMp4 {
-                    ${imageFragment}
+                    mediaItemUrl
+                    mediaDetails {
+                      width
+                      height
+                    }
                   }
                   
                 }

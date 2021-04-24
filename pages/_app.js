@@ -89,6 +89,7 @@ const theme = extendTheme({
           borderBottomColor: 'brand.primary.300',
           textShadow: '1px 1px 0px rgba(0,0,0,.3)',
           _hover: {
+            transform: 'translateY(-5px)',
             boxShadow: "0 1rem 2rem rgba(72, 50, 211, 0.35)",
             bgGradient: colorMode === "light" ? "linear-gradient(45deg, brand.primary.300, brand.primary.400)" : "linear-gradient(45deg, brand.primary.300, brand.primary.400)",
           }
@@ -100,6 +101,7 @@ const theme = extendTheme({
           bgGradient: 'linear(to bottom right, rgba(72, 50, 211, 0.00), rgba(72, 50, 211, 0.1))',
           boxShadow: 'inset 0 1px 2px white, 0 .5rem 1rem rgba(72, 50, 211, 0.15)',
           _hover: {
+            transform: 'translateY(-5px)',
             color: colorMode === "light" ? 'brand.primary.400' : "gray.100",
             borderColor: colorMode === 'light' ? 'brand.primary.400' : 'gray.800',
             bgGradient: 'linear(to bottom right, rgba(72, 50, 211, 0.1), rgba(72, 50, 211, 0.25))',
@@ -113,6 +115,7 @@ const theme = extendTheme({
           boxShadow: 'inset 0 1px 2px white, 0 .5rem 1rem rgba(0, 50, 100, .1)',
           bgGradient: colorMode === "light" ? 'linear(to bottom right, gray.50, gray.100)' : 'linear(to top left, gray.100, gray.50)', 
           _hover: {
+            transform: 'translateY(-5px)',
             color: colorMode === "light" ? 'brand.primary.400' : "gray.100",
             borderColor: colorMode === 'light' ? 'brand.primary.400' : 'gray.800',
             bgGradient: 'linear(to bottom right, rgba(72, 50, 211, 0.15), rgba(72, 50, 211, 0.35))',

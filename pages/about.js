@@ -13,6 +13,7 @@ import {
   ListIcon,
   HStack,
   AspectRatio,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { fadeUpIn } from "../src/utils/framer-variants";
@@ -20,52 +21,27 @@ import { getCaseStudyList } from "./api/graphql/case-study";
 import SectionWrap from "../components/partials/section-wrap";
 import { MdCheckCircle } from "react-icons/md";
 import Image from "next/image";
+import Hero from "../components/blocks/hero";
+import Link from "next/link";
 
 const MotionHeading = motion(Heading);
-const MotionText = motion(Text)
+const MotionText = motion(Text);
+
 export default function Team({ caseStudyList }) {
-  let delay = 0
+  let delay = 0;
   return (
     <Layout>
       <Head>
         <title>About</title>
       </Head>
-      <Container maxW="900">
-        <VStack
-          textAlign="center"
-          spacing="2rem"
-          py={["3rem", "5rem", "7.5rem"]}
-        >
-          <MotionHeading
-            size="xs"
-            initial="hidden"
-            animate="visible"
-            variants={fadeUpIn}
-            transition={{ ease: "easeOut", duration: 0.5, delay: 0.2 * delay++ }}
-          >
-            WHERE CURIOSITY COMES FIRST
-          </MotionHeading>
-          <MotionHeading
-            size="2xl"
-            as="h1"
-            variant="h1"
-            variants={fadeUpIn}
-            transition={{ ease: "easeOut", duration: 0.5, delay: 0.2 * delay++ }}
-            initial="hidden"
-            animate="visible"
-          >
-            We’re a team of multidisciplinary storytellers and problem solvers
-          </MotionHeading>
-          <MotionText variants={fadeUpIn}
-            transition={{ ease: "easeOut", duration: 0.5, delay: 0.2 * delay++ }}
-            initial="hidden"
-            animate="visible" fontSize={['lg', 'xl', "3xl"]}>
-            We use empathy and storytelling to guide your product development,
+      <Hero
+        maxW="900"
+        headline="WHERE CURIOUSITY COMES FIRST"
+        title="We’re a team of multidisciplinary storytellers and problem solvers"
+        description="We use empathy and storytelling to guide your product development,
             delight your customers, and connect to your audience in a way that
-            converts.
-          </MotionText>
-        </VStack>
-      </Container>
+            converts."
+      />
 
       <SectionWrap my={(50, 75, 100)} delay={delay++}>
         <Container>
@@ -106,7 +82,7 @@ export default function Team({ caseStudyList }) {
         </Container>
       </SectionWrap>
 
-      <SectionWrap bg="gray.100">
+      <SectionWrap bg={useColorModeValue("gray.100", "gray.900")}>
         <Container maxW="800px">
           <VStack align="flex-start" spacing="2rem" width="auto">
             <Heading variant="h4" size="lg" as="h2" width="100%">
@@ -138,61 +114,80 @@ export default function Team({ caseStudyList }) {
                 </Text>
               </HStack>
             </VStack>
-            <Button variant="primary">Sound Like You? Say Hi</Button>
+            <Link href="/contact" passHref>
+            <Button as="a" variant="primary">Sound Like You? Say Hi</Button>
+            </Link>
           </VStack>
         </Container>
       </SectionWrap>
 
       <SectionWrap>
         <Container>
-        <SimpleGrid columns={[1, null, 2]} gap="3rem" alignItems="center" w="100%">
-          <AspectRatio ratio={1}>
-            <Image
-              src="/images/nermin.jpg"
-              layout="fill"
-              alt=""
-              objectFit="cover"
-            />
-          </AspectRatio>
-          <VStack maxW="500px" spacing="2rem" align="start">
-            <Heading>Nermin Kuckovic</Heading>
-            <Text>
-              B.S. — Mechanical Engineering — Portland State University
-            </Text>
+          <SimpleGrid
+            columns={[1, null, 2]}
+            gap="3rem"
+            alignItems="center"
+            w="100%"
+          >
+            <AspectRatio ratio={1}>
+              <Image
+                src="/images/nermin.jpg"
+                layout="fill"
+                alt=""
+                objectFit="cover"
+              />
+            </AspectRatio>
+            <VStack maxW="500px" spacing="2rem" align="start">
+              <Heading>Nermin Kuckovic</Heading>
+              <Text>
+                B.S. — Mechanical Engineering — Portland State University
+              </Text>
 
-            <Text>
-              Nermin is a photographer, videographer, and creative director
-              hailing from Portland, Oregon. Nermin has worked with startups and
-              musicians all over the west coast to direct and execute the
-              photography for brands across all visual channels.
-            </Text>
-          </VStack>
-        </SimpleGrid>
+              <Text>
+                Nermin is a photographer, videographer, and creative director
+                hailing from Portland, Oregon. Nermin has worked with startups
+                and musicians all over the west coast to direct and execute the
+                photography for brands across all visual channels.
+              </Text>
+            </VStack>
+          </SimpleGrid>
         </Container>
       </SectionWrap>
 
       <SectionWrap>
         <Container>
-        <SimpleGrid columns={[1, null, 2]} gap="3rem" alignItems="center" gridAutoFlow="dense" w="100%">
-          <AspectRatio ratio={1} gridColumn={[null, null, "2"]}>
-            <Image
-              src="/images/lucas.jpg"
-              layout="fill"
-              alt=""
-              objectFit="cover"
-            />
-          </AspectRatio>
-          <VStack maxW="500px" spacing="2rem" gridColumn={[null, null, "1"]} align="start">
-            <Heading>Lucas Marohn</Heading>
-            <Text>
-              B.S. — Entrepreneurship — Cal Poly San Luis Obispo
-            </Text>
+          <SimpleGrid
+            columns={[1, null, 2]}
+            gap="3rem"
+            alignItems="center"
+            gridAutoFlow="dense"
+            w="100%"
+          >
+            <AspectRatio ratio={1} gridColumn={[null, null, "2"]}>
+              <Image
+                src="/images/lucas.jpg"
+                layout="fill"
+                alt=""
+                objectFit="cover"
+              />
+            </AspectRatio>
+            <VStack
+              maxW="500px"
+              spacing="2rem"
+              gridColumn={[null, null, "1"]}
+              align="start"
+            >
+              <Heading>Lucas Marohn</Heading>
+              <Text>B.S. — Entrepreneurship — Cal Poly San Luis Obispo</Text>
 
-            <Text>
-            Lucas is a brand strategist and web developer from San Luis Obispo, California. He holds a Bachelor's Degree in Business Administration with a concentration on Entrepreneurship from Cal Poly San Luis Obispo.
-            </Text>
-          </VStack>
-        </SimpleGrid>
+              <Text>
+                Lucas is a brand strategist and web developer from San Luis
+                Obispo, California. He holds a Bachelor's Degree in Business
+                Administration with a concentration on Entrepreneurship from Cal
+                Poly San Luis Obispo.
+              </Text>
+            </VStack>
+          </SimpleGrid>
         </Container>
       </SectionWrap>
     </Layout>

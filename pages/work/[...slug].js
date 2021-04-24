@@ -25,6 +25,7 @@ import Stats from "../../components/blocks/stats";
 import BasicText from "../../components/blocks/basic-text";
 import Columns from "../../components/blocks/columns";
 import FullWidthImage from "../../components/blocks/full-width-image";
+import CaseStudyHero from '../../components/case-study-hero'
 
 
 const MotionBox = motion(Box);
@@ -34,7 +35,7 @@ const MotionText = motion(Text);
 export default function CaseStudy({ data }) {
   const layoutIdSuffix = data.databaseId;
   const bgColor = useColorModeValue("white", "gray.700");
-
+  console.debug(data)
   const switchSection = (section) => {
     switch (section.fieldGroupName) {
       case "Project_AcfProject_ContentSections_BasicText":
@@ -57,90 +58,23 @@ export default function CaseStudy({ data }) {
       <Head>
         <title>{data.title}</title>
       </Head>
-      <MotionBox
-        className="hero"
-        as="article"
-        w="100%"
-        layoutId={`cs-card-${layoutIdSuffix}`}
-        bg={bgColor}
-      >
-        <Grid
-          templateColumns={["100%"]}
-          alignItems="center"
-          gap={["2rem", null, 10]}
-        >
-          <MotionBox
-            layoutId={`cs-thumb-${layoutIdSuffix}`}
-            borderTopRadius="0rem"
-          >
-            <AspectRatio
-              ratio={[16 / 9, null, 16 / 9]}
-              bg="gray.100"
-              maxH="80vh"
-              overflow="hidden"
-            >
-              <Image
-                layoutId={`cs-image-${layoutIdSuffix}`}
-                src="/images/work/mutt-couture/glass.png"
-                layout="fill"
-                objectFit="cover"
-              />
-            </AspectRatio>
-          </MotionBox>
-          
-        </Grid>
-      </MotionBox>
+      <CaseStudyHero
+        key={data.databaseId}
+        animate="visible"
+        variants={fadeUpIn}
+        headline={data.acf_project.headline}
+        transition={{ ease: "easeOut", duration: 0.5, delay: 0.2 }}
+        layoutIdSuffix={data.databaseId}
+        title={data.title}
+        intro={data.excerpt}
+        link={`/work/${data.slug}`}
+        thumbImage={data?.featuredImage.node}
+        layout="position"
+      />
 
-
-      <SectionWrap>
-        <VStack
-            p="1rem 5rem 1rem 1rem"
-            maxW={[null, null, "40rem"]}
-            marginX={[null, null, "auto"]}
-            alignItems="start"
-            spacing="3rem"
-            zIndex="10"
-            color={useColorModeValue("gray.900", "white")}
-          >
-            <VStack>
-              <MotionHeading
-                size="sm"
-                w="100%"
-                fontWeight="400"
-                color={useColorModeValue(
-                  "brand.primary.400",
-                  "brand.primary.100"
-                )}
-              >
-                {data.title}
-              </MotionHeading>
-              <MotionHeading
-                as="h1"
-                variants={fadeUpIn}
-                initial="hidden"
-                animate="visible"
-                transition={{ delay: 0.05, duration: 0.25 }}
-              >
-                {data.acf_project.headline}
-              </MotionHeading>
-              <MotionText layoutId={`cs-desc-${layoutIdSuffix}`} fontSize="2xl">
-                A rebrand resulting in an 800% Increase in qualified leads in
-                the first 30 days
-              </MotionText>
-            </VStack>
-
-            <Testimonial
-              image="/images/work/mutt-couture/testimonial-thumb.jpg"
-              author="Josh Herman"
-              title="Founder of Mutt Couture"
-              quote="The new look and feel is exactly what I wanted. It's what I always knew Mutt Couture could become."
-              bg={useColorModeValue("gray.100", "gray.800")}
-            />
-          </VStack>
-        </SectionWrap>
 
       <VStack spacing="5rem">
-        <Box
+        {/* <Box
           bg={[null, null, useColorModeValue("gray.100", "gray.900")]}
           pt={[null, null, "3rem"]}
           pb={[null, null, "2rem"]}
@@ -157,7 +91,7 @@ export default function CaseStudy({ data }) {
               ]}
             />
           </Container>
-        </Box>
+        </Box> */}
 
         {data.acf_project.contentSections.map((section, index) => {
           return (
