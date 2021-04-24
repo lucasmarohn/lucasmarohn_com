@@ -1,22 +1,21 @@
 import Head from "next/head";
 import Layout from "../components/layout";
 import Container from "../components/container";
-import { Box, VStack, Heading, Text } from "@chakra-ui/react";
+import { Box, useColorModeValue, VStack } from "@chakra-ui/react";
 import { useRef, useState } from "react";
 import {
   FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
   Input,
   Textarea,
   Button,
 } from "@chakra-ui/react";
 
-import { fetchAPI } from "../pages/api/graphql/fetch-api";
 import { gravityFormData } from "../pages/api/graphql/contact-form";
 import Hero from "../components/blocks/hero";
 import SectionWrap from "../components/partials/section-wrap";
+
+const WP_SITE_URL = process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL;
 
 
 export default function Contact({ gFormData }) {
@@ -54,7 +53,7 @@ export default function Contact({ gFormData }) {
     setTimeout(()=> {
       const formData = new FormData(formRef.current)
       console.log('formData', formData)
-      const res = fetch('http://voidmade.local/wp-json/gf/v2/forms/1/submissions',{
+      const res = fetch(`${WP_SITE_URL}/wp-json/gf/v2/forms/1/submissions`,{
         method: 'POST',
         body: formData
       })
@@ -80,7 +79,7 @@ export default function Contact({ gFormData }) {
       {fields && (
         <SectionWrap my="0">
         <Container maxW="70rem">
-          <Box bg="white" padding={['2rem', '5rem']}>
+          <Box bg={useColorModeValue('white', 'gray.700')} padding={['2rem', '5rem']}>
           {!formSubmitted && <form
             onSubmit={submitForm}
             ref={formRef}

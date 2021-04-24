@@ -54,7 +54,7 @@ export default function MuttCouture() {
               overflow="hidden"
             >
               <Image
-                layoutId={`cs-image-${layoutIdSuffix}`}
+                
                 src="/images/work/mutt-couture/glass.png"
                 layout="fill"
                 objectFit="cover"
