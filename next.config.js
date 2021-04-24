@@ -17,7 +17,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ['voidmade.local','staging.emergence.design'],
+    domains: ['voidmade.local','staging.emergence.design', 'app-60708904c1ac183264fb7a04.closte.com'],
   },
   pwa: {
     disable: process.env.NODE_ENV === 'development',
