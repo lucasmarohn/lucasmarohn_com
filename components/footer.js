@@ -12,8 +12,6 @@ import SectionWrap from "./partials/section-wrap";
 export default function Footer() {
   return (
     <Box
-      position={["sticky", null, "static"]}
-      bottom="0"
       mt="100px"
       px={["2.5rem"]}
       py={['2.5rem', null, null, '5rem' ]}
@@ -25,16 +23,17 @@ export default function Footer() {
           templateColumns={["100%", "1fr 1fr"]}
           maxW="1440"
           mx="auto"
+          textAlign={['center','none']}
         >
-          <VStack align="left">
+          <VStack align="left" textAlign={[null, "left"]}>
             <Heading size="md">voidmade</Heading>
             <Text fontSize="xs">&copy; 2021 voidmade</Text>
           </VStack>
 
-          <VStack align="right">
+          <VStack align={[null, "right"]}>
             <HStack
-              textAlign="right"
-              justify="right"
+              textAlign={[null, "right"]}
+              justify={['center', "right"]}
               spacing="20px"
               fontSize={["sm", null, "lg"]}
             >
@@ -43,7 +42,7 @@ export default function Footer() {
               <Link href="/about">Team</Link>
               <Link href="/contact">Contact</Link>
             </HStack>
-            <Text fontSize="xs" textAlign="right">
+            <Text fontSize="xs" textAlign={[null, "right"]}>
               Privacy Policy
             </Text>
           </VStack>
