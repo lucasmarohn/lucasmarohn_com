@@ -154,8 +154,9 @@ export function CaseStudyItemMobile({
             overflow="hidden"
             type="crossfade"
             w="100%"
+            zIndex="-1"
           >
-            <AspectRatio ratio={16 / 8} maxH="100vh">
+            <AspectRatio ratio={16 / 8} maxH="100vh" >
               {thumbImage?.sourceUrl ? (
                 <Image src={thumbImage?.sourceUrl} srcSet={thumbImage?.srcSet} layout="fill" objectFit="cover" />
               ) : (
