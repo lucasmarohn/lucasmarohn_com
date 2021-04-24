@@ -157,7 +157,7 @@ export function CaseStudyItemMobile({
           >
             <AspectRatio ratio={16 / 8} maxH="100vh">
               {thumbImage?.sourceUrl ? (
-                <WPImage image={thumbImage} layout="fill" objectFit="cover" />
+                <Image src={thumbImage?.sourceUrl} srcSet={thumbImage?.srcSet} layout="fill" objectFit="cover" />
               ) : (
                 <Box bg="gray.100" />
               )}
