@@ -42,8 +42,8 @@ export default function Hero({headline, title, description, button, maxW, minH, 
             {headline}
           </MotionHeading>}
           {title && <MotionHeading
-            size="3xl"
             as="h1"
+            variant="h1"
             variants={fadeUpIn}
             transition={{ ease: "easeOut", duration: 0.5, delay: 0.2 }}
             initial="hidden"
@@ -53,7 +53,7 @@ export default function Hero({headline, title, description, button, maxW, minH, 
             {printSpans(splitText(title))}
           </MotionHeading>}
           {description && <MotionText
-            fontSize="3xl"
+            variant="large"
             variants={fadeUpIn}
             transition={{ ease: "easeOut", duration: 0.5, delay: 0.4 }}
             initial="hidden"
@@ -76,7 +76,7 @@ export default function Hero({headline, title, description, button, maxW, minH, 
               </Button>
             </Link>}
             {(!button.href && button?.label) && 
-              <Button as="a" variant="primary" size="lg" onClick={button?.onClick} >
+              <Button variant="primary" size="lg" onClick={button?.onClick} >
                 {button.label}
               </Button>}
             </>}

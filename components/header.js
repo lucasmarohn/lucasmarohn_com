@@ -269,7 +269,7 @@ function HeaderMobile({
           justify="space-between"
           align="center"
           width="100%"
-          p="1rem"
+          p="1rem .5rem"
           borderTop="1px solid"
           borderColor={borderColor}
           bg={bg}
@@ -279,6 +279,7 @@ function HeaderMobile({
             justifyContent="space-between"
             w="100%"
             size="md"
+            spacing="0"
             divider={<StackDivider borderColor={borderColor} />}
           >
             {navItems &&

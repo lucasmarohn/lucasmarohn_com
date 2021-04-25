@@ -12,7 +12,6 @@ import SectionWrap from "./partials/section-wrap";
 export default function Footer() {
   return (
     <Box
-      mt="100px"
       px={["2.5rem"]}
       py={['2.5rem', null, null, '5rem' ]}
       pb={["125px", null, null, "5rem"]}

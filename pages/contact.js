@@ -89,7 +89,7 @@ export default function Contact({ gFormData }) {
             <VStack align="start" spacing="2rem">
               {fields.map((field) => {
                 return (
-                  <FormControl key={field.id} htmlId={field.id} isDisabled={formSubmitted || formSubmitting} isRequired>
+                  <FormControl key={field.id} id={field.id} isDisabled={formSubmitted || formSubmitting} isRequired>
                     <FormLabel htmlFor={field.id}>{field.label}</FormLabel>
                     {printField(field)}
                   </FormControl>

@@ -18,7 +18,6 @@ export default function Work({caseStudyList}) {
       <Head>
         <title>Testing</title>
       </Head>
-      <AnimatePresence exitBeforeEnter>
       <Hero
         maxW="900"
         headline="PAST PROJECTS"
@@ -52,7 +51,6 @@ export default function Work({caseStudyList}) {
         </Grid>
        
         </Container>
-        </AnimatePresence>
     </Layout>
   );
 }
