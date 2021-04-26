@@ -5,16 +5,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const nextConfig = {
   mode: 'production',
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/,
-      issuer: {
-        test: /\.(js|ts)x?$/,
-      },
-      use: ['svg-url-loader'],
-    });
-
-    return config;
+  future: {
+    webpack5: true,
   },
   images: {
     domains: ['voidmade.local','staging.emergence.design', 'app-60708904c1ac183264fb7a04.closte.com'],

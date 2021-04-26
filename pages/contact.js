@@ -74,7 +74,7 @@ export default function Contact({ gFormData }) {
       </Head>
 
 
-      <Hero headline="START A CONVERSATION" title="Let's build something beatiful together" />
+      <Hero headline="START A CONVERSATION" title="Let's build something beautiful together" />
 
       {fields && (
         <SectionWrap my="0">

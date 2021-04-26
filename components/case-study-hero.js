@@ -76,10 +76,10 @@ export function CaseStudyHeroDesktop({
     >
       <Grid templateColumns="100%" alignItems="center" gap={[10, null, 0]}>
         <Grid
-          templateColumns="1fr 1.5fr"
+          templateColumns="100%"
           gap="1rem"
           gridRow="1"
-          p="5rem"
+          p={["3rem 1.5rem", null, "5rem"]}
           gap="3rem"
           alignItems="end"
           bg="transparent"
@@ -106,16 +106,6 @@ export function CaseStudyHeroDesktop({
       </Grid>
       <MotionBox boxShadow="0 2rem 2rem rgba(0,50,100,0)">
         <Grid templateColumns="100%" alignItems="center" gap={[10, null, 0]}>
-          <MotionGrid
-            templateColumns="1fr 1.5fr"
-            gap="1rem"
-            gridRow="1"
-            gap="3rem"
-            alignItems="end"
-            bg={bgColor}
-            borderBottomRadius="1rem"
-            layoutId={`cs-text-${layoutIdSuffix}`}
-          ></MotionGrid>
 
           <MotionBox
             layoutId={`cs-thumb-${layoutIdSuffix}`}

@@ -96,36 +96,37 @@ export function CaseStudyItemMobile({
   const bgColor = useColorModeValue("white", "gray.600");
   return (
     <MotionBox
-      initial={initial}
-      animate={animate}
-      variants={variants}
-      transition={transition}
-      layoutId={`cs-text-${layoutIdSuffix}`}
-      whileHover={{
-        scale: useBreakpointValue({ base: 1, sm: 1.02, md: 1 }),
-        transition: { duration: 0.1 },
-      }}
-      whileTap={{
-        scale: 0.975,
-        transition: { duration: 0.1 },
-      }}
+    initial={initial}
+    animate={animate}
+    variants={variants}
+    transition={transition}
+    layoutId={`cs-text-${layoutIdSuffix}`}
+    whileHover={{
+      scale: useBreakpointValue({ base: 1, sm: 1.02, md: 1 }),
+      transition: { duration: 0.1 },
+    }}
+    whileTap={{
+      scale: 0.975,
+      transition: { duration: 0.1 },
+    }}
     >
-      <LinkBox as="article" w="100%" bg={bgColor}>
+      <LinkBox as="article" w="100%" bg={bgColor} zIndex="2">
         <Grid templateColumns="100%" alignItems="center">
           <MotionGrid
+            zIndex="2"
             layoutId={`cs-text-${layoutIdSuffix}`}
             templateColumns="100%"
             gap="1rem"
             gridRow="1"
             p={["2rem", "3rem"]}
             bg={bgColor}
-            exit={{ opacity: 0, y: "-50%" }}
+            
           >
-            <VStack align="left">
+            <MotionVStack align="left" layoutId={`cs-text-vstack-${layoutIdSuffix}`}>
               {headline && (
-                <Heading variant="h6" as="span">
+                <MotionHeading variant="h6" as="span" layoutId={`cs-headline-${layoutIdSuffix}`} layout="position">
                   {headline}
-                </Heading>
+                </MotionHeading>
               )}
 
               <MotionHeading
@@ -138,7 +139,7 @@ export function CaseStudyItemMobile({
                   <LinkOverlay as="a">{title}</LinkOverlay>
                 </Link>
               </MotionHeading>
-            </VStack>
+            </MotionVStack>
 
             <MotionBox
               fontSize="xl"
@@ -154,9 +155,9 @@ export function CaseStudyItemMobile({
             overflow="hidden"
             type="crossfade"
             w="100%"
-            zIndex="-1"
+            
           >
-            <AspectRatio ratio={16 / 8} maxH="100vh" >
+            <AspectRatio ratio={16 / 8} maxH="100vh" w="100%" zIndex="0">
               {thumbImage?.sourceUrl ? (
                 <Image src={thumbImage?.sourceUrl} srcSet={thumbImage?.srcSet} layout="fill" objectFit="cover" />
               ) : (
@@ -204,7 +205,7 @@ export function CaseStudyItemDesktop({
       <MotionBox boxShadow="0 2rem 2rem rgba(0,50,100,.1)" position="static">
         <Grid templateColumns="100%" alignItems="center" gap={[10, null, 0]}>
           <Grid
-            templateColumns="1fr 1.5fr"
+            templateColumns="2fr 1fr"
             gap="1rem"
             gridRow="1"
             p="5rem"
@@ -240,7 +241,7 @@ export function CaseStudyItemDesktop({
             </MotionVStack>
 
             <MotionBox
-              fontSize="xl"
+              fontSize="lg"
               layoutId={`cs-subtitle-${layoutIdSuffix}`}
               layout="position"
               alignSelf="flex-end"

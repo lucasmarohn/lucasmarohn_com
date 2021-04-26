@@ -202,7 +202,7 @@ const theme = extendTheme({
             props.colorMode === "light"
               ? "brand.primary.300"
               : "brand.primary.100",
-          fontSize: "md",
+          fontSize: ['8px', '12px'],
           textTransform: "uppercase",
         }),
       },

@@ -4,38 +4,24 @@ import {
 } from "../api/graphql/case-study";
 
 import Head from "next/head";
-import Image from "next/image";
 import Layout from "../../components/layout";
-import Container from "../../components/container";
 import SectionWrap from '../../components/partials/section-wrap'
 import {
   useColorModeValue,
   Box,
-  Grid,
   VStack,
-  Heading,
-  Text,
-  AspectRatio,
 } from "@chakra-ui/react";
 
-import { motion } from "framer-motion";
 import { fadeUpIn } from "../../src/utils/framer-variants";
-import Testimonial from "../../components/testimonial";
-import Stats from "../../components/blocks/stats";
 import BasicText from "../../components/blocks/basic-text";
 import Columns from "../../components/blocks/columns";
 import FullWidthImage from "../../components/blocks/full-width-image";
 import CaseStudyHero from '../../components/case-study-hero'
 
 
-const MotionBox = motion(Box);
-const MotionHeading = motion(Heading);
-const MotionText = motion(Text);
-
 export default function CaseStudy({ data }) {
   const layoutIdSuffix = data.databaseId;
   const bgColor = useColorModeValue("white", "gray.700");
-  console.debug(data)
   const switchSection = (section) => {
     switch (section.fieldGroupName) {
       case "Project_AcfProject_ContentSections_BasicText":
@@ -114,7 +100,7 @@ export async function getStaticProps({ params, preview = false }) {
 
 export async function getStaticPaths() {
   const pages = await getAllCaseStudyURI();
-
+  
   return {
     paths: pages.edges.map(({ node }) => `/work/${node.slug}`) || [],
     fallback: false,

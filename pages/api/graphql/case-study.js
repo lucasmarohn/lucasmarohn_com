@@ -131,5 +131,5 @@ export async function getCaseStudyData(slug, preview) {
       },
     }
   )
-  return data.project
+  return data?.project
 }

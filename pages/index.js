@@ -12,14 +12,6 @@ import {
   SimpleGrid,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { fadeUpIn } from "../src/utils/framer-variants";
-
-const MotionHeading = motion(Heading);
-const MotionText = motion(Text);
-const MotionButtonGroup = motion(ButtonGroup);
-const MotionBox = motion(Box)
-
-import {splitText, printSpans} from '../src/utils/helpers'
 
 import Hero from '../components/blocks/hero'
 

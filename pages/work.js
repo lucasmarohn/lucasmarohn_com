@@ -32,9 +32,9 @@ export default function Work({caseStudyList}) {
         >
 
           {caseStudyList && caseStudyList.map(({item}, index) => 
-          <SectionWrap my="0">
+          <SectionWrap my="0" key={item.databaseId}>
             <CaseStudyItem
-              key={item.databaseId}
+              
               animate="visible"
               variants={fadeUpIn}
               headline={item.acf_project.headline}

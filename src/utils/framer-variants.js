@@ -28,3 +28,11 @@ export const fadeDownIn = {
     transform: "translateY(0px)"
   }
 }
+
+export const stagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+}
