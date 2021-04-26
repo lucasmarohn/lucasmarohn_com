@@ -16,7 +16,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { fadeUpIn } from "../src/utils/framer-variants";
+import { fadeUpIn, stagger } from "../src/utils/framer-variants";
 import { getCaseStudyList } from "./api/graphql/case-study";
 import SectionWrap from "../components/partials/section-wrap";
 import { MdCheckCircle } from "react-icons/md";
@@ -24,8 +24,8 @@ import Image from "next/image";
 import Hero from "../components/blocks/hero";
 import Link from "next/link";
 
-const MotionHeading = motion(Heading);
-const MotionText = motion(Text);
+const MotionVStack = motion(VStack);
+const MotionSimpleGrid = motion(SimpleGrid);
 
 export default function Team({ caseStudyList }) {
   let delay = 0;
@@ -36,7 +36,7 @@ export default function Team({ caseStudyList }) {
       </Head>
       <Hero
         maxW="900"
-        headline="WHERE CURIOUSITY COMES FIRST"
+        headline="WHERE CURIOSITY COMES FIRST"
         title="We’re a team of multidisciplinary storytellers and problem solvers"
         description="We use empathy and storytelling to guide your product development,
             delight your customers, and connect to your audience in a way that
@@ -45,40 +45,40 @@ export default function Team({ caseStudyList }) {
 
       <SectionWrap my={(50, 75, 100)} delay={delay++}>
         <Container>
-          <SimpleGrid columns={[1, null, null, 2, 4]} gap="3rem">
-            <VStack align="start">
+          <MotionSimpleGrid columns={[1, null, null, 2, 4]} gap="3rem" variants={stagger} animate="animate" transition={{duration: .2, ease: 'easeOut'}}>
+            <MotionVStack align="start" variants={fadeUpIn} initial="hidden" animate="visible" >
               <Heading size="lg">Storytelling and Strategy</Heading>
               <Text>
                 Use the enduring power of story to connect with your audience on
                 an emotional level and build authentic, profitable, and lasting
                 relationships.
               </Text>
-            </VStack>
-            <VStack align="start">
+            </MotionVStack>
+            <MotionVStack align="start" variants={fadeUpIn} initial="hidden" animate="visible" >
               <Heading size="lg">Branding and Identity</Heading>
               <Text>
                 Branding is the emotional response people have when they imagine
                 your business. Great brands are engaging, memorable, and
                 emotionally intelligent.
               </Text>
-            </VStack>
-            <VStack align="start">
+            </MotionVStack>
+            <MotionVStack align="start" variants={fadeUpIn} initial="hidden" animate="visible" >
               <Heading size="lg">Delightful Digital Experiences</Heading>
               <Text>
                 There are a thousand great ways to engage with your audience and
                 create delight online. We help you navigate the sea of options
                 and choose the right medium.
               </Text>
-            </VStack>
-            <VStack align="start">
+            </MotionVStack>
+            <MotionVStack align="start" variants={fadeUpIn} initial="hidden" animate="visible" >
               <Heading size="lg">Consulting and Problem Solving</Heading>
               <Text>
                 Want an independent expert opinion? We love to share our
                 expertise and help you navigate the immeasurable opportunities
                 that are available to you.
               </Text>
-            </VStack>
-          </SimpleGrid>
+            </MotionVStack>
+          </MotionSimpleGrid>
         </Container>
       </SectionWrap>
 

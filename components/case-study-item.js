@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
+import { AnimateSharedLayout } from 'framer-motion'
 import {
   Box,
   LinkBox,
@@ -40,7 +40,7 @@ export default function CaseStudyItem({
   thumbImage = null,
 }) {
   return (
-    <>
+    <AnimateSharedLayout>
       {useBreakpointValue({
         base: (
           <CaseStudyItemMobile
@@ -75,7 +75,7 @@ export default function CaseStudyItem({
           />
         ),
       })}
-    </>
+    </AnimateSharedLayout>
   );
 }
 
@@ -101,14 +101,14 @@ export function CaseStudyItemMobile({
     variants={variants}
     transition={transition}
     layoutId={`cs-text-${layoutIdSuffix}`}
-    whileHover={{
-      scale: useBreakpointValue({ base: 1, sm: 1.02, md: 1 }),
-      transition: { duration: 0.1 },
-    }}
-    whileTap={{
-      scale: 0.975,
-      transition: { duration: 0.1 },
-    }}
+    // whileHover={{
+    //   scale: useBreakpointValue({ base: 1, sm: 1.02, md: 1 }),
+    //   transition: { duration: 0.1 },
+    // }}
+    // whileTap={{
+    //   scale: 0.975,
+    //   transition: { duration: 0.1 },
+    // }}
     >
       <LinkBox as="article" w="100%" bg={bgColor} zIndex="2">
         <Grid templateColumns="100%" alignItems="center">

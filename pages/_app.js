@@ -8,13 +8,13 @@ import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider theme={theme}>
-      <AnimatePresence exitBeforeEnter>
-        <AnimateSharedLayout>
+    <AnimatePresence exitBeforeEnter>
+      <AnimateSharedLayout>
+        <ChakraProvider theme={theme}>
           <Component {...pageProps} />
-        </AnimateSharedLayout>
-      </AnimatePresence>
-    </ChakraProvider>
+        </ChakraProvider>
+      </AnimateSharedLayout>
+    </AnimatePresence>
   );
 }
 
@@ -152,11 +152,11 @@ const theme = extendTheme({
         lineHeight: "150%",
       }),
       sizes: {
-        '3xl': {
-          fontSize: ['18px', '20px', '22px'],
-          color: 'red'
-        }
-      }
+        "3xl": {
+          fontSize: ["18px", "20px", "22px"],
+          color: "red",
+        },
+      },
     },
     UnorderedList: {
       baseStyle: ({ colorMode }) => ({
@@ -185,7 +185,7 @@ const theme = extendTheme({
       }),
       variants: {
         h1: {
-          fontSize: ['30px', '36px', '48px', '64px']
+          fontSize: ["30px", "36px", "48px", "64px"],
         },
         h2: {
           fontSize: ["28px", "32px", "36px", "48px"],
@@ -202,7 +202,7 @@ const theme = extendTheme({
             props.colorMode === "light"
               ? "brand.primary.300"
               : "brand.primary.100",
-          fontSize: ['8px', '12px'],
+          fontSize: ["12px", "14px", "16px"],
           textTransform: "uppercase",
         }),
       },

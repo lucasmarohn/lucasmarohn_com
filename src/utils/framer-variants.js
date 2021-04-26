@@ -1,15 +1,32 @@
-export const fadeUpIn = {
-  hidden: {
-    opacity: 0,
-    y: 100,
-    scale: 0.98
+export const stagger = {
+  visible: {
+    transition: {
+      when: "beforeChildren",
+      staggerChildren: 0.2,
+    },
   },
+};
+
+export const staggerLong = {
+  visible: {
+    transition: {
+      when: "beforeChildren",
+      staggerChildren: 1,
+    },
+  },
+};
+
+export const fadeUpIn = {
+  hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
     y: 0,
-    scale: 1,
-  }
-}
+    transition: {
+      duration: 0.6,
+      ease: 'easeOut',
+    },
+  },
+};
 
 export const fadeUpOut = {
   exit: {
@@ -26,13 +43,5 @@ export const fadeDownIn = {
   visible: {
     opacity: 1,
     transform: "translateY(0px)"
-  }
-}
-
-export const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1
-    }
   }
 }

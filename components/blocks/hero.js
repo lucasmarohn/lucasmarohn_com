@@ -11,13 +11,12 @@ import {
 import { motion } from "framer-motion";
 import { fadeUpIn, stagger } from "../../src/utils/framer-variants";
 
+import Link from "next/link";
+
+const MotionVStack = motion(VStack);
 const MotionHeading = motion(Heading);
 const MotionText = motion(Text);
 const MotionButtonGroup = motion(ButtonGroup);
-const MotionBox = motion(Box);
-const MotionVStack = motion(VStack)
-
-import Link from "next/link";
 
 export default function Hero({
   headline,
@@ -31,12 +30,6 @@ export default function Hero({
   return (
     <Container>
       <MotionVStack
-        variants={stagger}
-        animate="animate"
-        transition={{
-          duration: '.2',
-          ease: 'easeOut'
-        }}
         textAlign="center"
         py="5rem"
         spacing={["1rem", null, "2rem"]}
@@ -44,46 +37,32 @@ export default function Hero({
         maxW={maxW || "700px"}
         mx="auto"
         justify="center"
+        initial="hidden"
+        animate="visible"
+        variants={stagger}
       >
         {headline && (
-          <MotionHeading
-            size="xs"
-            variants={fadeUpIn}
-            initial="hidden"
-            animate="visible"
-          >
+          <MotionHeading variants={fadeUpIn} variant="h6">
             {headline}
           </MotionHeading>
         )}
         {title && (
           <MotionHeading
+            variants={fadeUpIn}
             as="h1"
             variant="h1"
-            variants={fadeUpIn}
-            initial="hidden"
-            animate="visible"
             marginTop="1rem !important"
           >
             {printSpans(splitText(title))}
           </MotionHeading>
         )}
         {description && (
-          <MotionText
-            variant="large"
-            variants={fadeUpIn}
-            initial="hidden"
-            animate="visible"
-            maxW="900"
-          >
+          <MotionText variants={fadeUpIn} variant="large" maxW="900">
             {description}
           </MotionText>
         )}
         {children}
-        <MotionButtonGroup
-          variants={fadeUpIn}
-          initial="hidden"
-          animate="visible"
-        >
+        <MotionButtonGroup variants={fadeUpIn}>
           {button && (
             <>
               {button?.href && (

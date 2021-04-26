@@ -18,6 +18,7 @@ import Columns from "../../components/blocks/columns";
 import FullWidthImage from "../../components/blocks/full-width-image";
 import CaseStudyHero from '../../components/case-study-hero'
 
+import { motion} from 'framer-motion'
 
 export default function CaseStudy({ data }) {
   const layoutIdSuffix = data.databaseId;
@@ -40,9 +41,10 @@ export default function CaseStudy({ data }) {
     }
   };
   return (
+    <motion.div exit={{opacity: 0}} initial={{opacity: 0}} animate={{opacity: 1}}>
     <Layout>
       <Head>
-        <title>{data.title}</title>
+        <title>{data.title} Case Study | voidmade</title>
       </Head>
       <CaseStudyHero
         key={data.databaseId}
@@ -59,7 +61,7 @@ export default function CaseStudy({ data }) {
       />
 
 
-      <VStack spacing="5rem">
+      <VStack spacing="5rem" mb="10rem">
         {/* <Box
           bg={[null, null, useColorModeValue("gray.100", "gray.900")]}
           pt={[null, null, "3rem"]}
@@ -88,6 +90,7 @@ export default function CaseStudy({ data }) {
         })}
       </VStack>
     </Layout>
+    </motion.div>
   );
 }
 

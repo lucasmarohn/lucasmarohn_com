@@ -3,10 +3,57 @@ import { Grid, Box, AspectRatio } from "@chakra-ui/react";
 import Wysiwyg from "../partials/wysiwyg";
 import WPImage from "../partials/wp-image";
 
+import { motion } from 'framer-motion'
+import { stagger, fadeUpIn } from '../../src/utils/framer-variants'
+
+const MotionGrid = motion(Grid)
+const MotionDiv = motion('span')
+
 export default function Columns({ columns, maxColumns }) {
+  const printColumn = (singleCol) => {
+    switch (singleCol.fieldGroupName) {
+      case "Project_AcfProject_ContentSections_Columns_SingleColumn_ColImage":
+        return (
+          <WPImage
+            image={singleCol.colImageContent}
+            withBlur
+          />
+        );
+      case "Project_AcfProject_ContentSections_Columns_SingleColumn_ColWysiwyg":
+        return (
+          <Box>
+            <Wysiwyg html={singleCol.colWysiwygContent} />
+          </Box>
+        );
+      case "Project_AcfProject_ContentSections_Columns_SingleColumn_Video":
+        return (
+          <Box w="100%">
+            <AspectRatio ratio={singleCol.colAspectRatio / 100}>
+              <video
+                poster={singleCol?.colVideoCover?.sourceUrl}
+                loop
+                autoPlay="true"
+                muted
+              >
+                <source
+                  type="video/mp4"
+                  src={singleCol.colVideoMp4.mediaItemUrl}
+                />
+              </video>
+            </AspectRatio>
+          </Box>
+        );
+      default:
+        return (
+          <Box>
+            SingleCol: {singleCol.fieldGroupName}
+          </Box>
+        );
+    }
+  }
   return (
     <Container>
-      <Grid
+      <MotionGrid
         templateColumns={[
           "100%",
           null,
@@ -15,51 +62,19 @@ export default function Columns({ columns, maxColumns }) {
         w="100%"
         gap={["2rem", null, "5rem"]}
         alignItems="center"
+        initial="hidden"
+        animate="visible"
+        variants={stagger}
+
       >
         {columns.map((singleCol, index) => {
-          switch (singleCol.fieldGroupName) {
-            case "Project_AcfProject_ContentSections_Columns_SingleColumn_ColImage":
-              return (
-                <WPImage
-                  key={[singleCol, index]}
-                  image={singleCol.colImageContent}
-                  withBlur
-                />
-              );
-            case "Project_AcfProject_ContentSections_Columns_SingleColumn_ColWysiwyg":
-              return (
-                <Box key={[singleCol, index]}>
-                  <Wysiwyg html={singleCol.colWysiwygContent} />
-                </Box>
-              );
-            case "Project_AcfProject_ContentSections_Columns_SingleColumn_Video":
-              console.log(singleCol);
-              return (
-                <Box w="100%">
-                  <AspectRatio ratio={singleCol.colAspectRatio / 100}>
-                    <video
-                      poster={singleCol?.colVideoCover?.sourceUrl}
-                      loop
-                      autoPlay="true"
-                      muted
-                    >
-                      <source
-                        type="video/mp4"
-                        src={singleCol.colVideoMp4.mediaItemUrl}
-                      />
-                    </video>
-                  </AspectRatio>
-                </Box>
-              );
-            default:
-              return (
-                <Box key={[singleCol, index]}>
-                  SingleCol: {singleCol.fieldGroupName}
-                </Box>
-              );
-          }
+          return (
+          <MotionDiv key={[singleCol, index]} variants={fadeUpIn}>
+            {printColumn(singleCol)}
+          </MotionDiv>
+          )
         })}
-      </Grid>
+      </MotionGrid>
     </Container>
   );
 }

@@ -12,7 +12,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+import { AnimateSharedLayout, motion } from "framer-motion";
 import WPImage from "./partials/wp-image";
 
 const MotionHeading = motion(Heading);
@@ -68,6 +68,7 @@ export function CaseStudyHeroDesktop({
 }) {
   const bgColor = useColorModeValue("white", "gray.600");
   return (
+    
     <MotionBox
       as="article"
       w="100%"

@@ -12,9 +12,12 @@ import SectionWrap from '../components/partials/section-wrap'
 
 import Hero from '../components/blocks/hero'
 
+const MotionLayout = motion(Layout)
+
 export default function Work({caseStudyList}) {
   return (
-    <Layout>
+    <motion.div exit={{opacity: 0}} initial={{opacity: 0}} animate={{opacity: 1}}>
+    <MotionLayout exit={{opacity: 0}} initial={{opacity: 0}} animate={{opacity: 1}}>
       <Head>
         <title>Testing</title>
       </Head>
@@ -51,7 +54,8 @@ export default function Work({caseStudyList}) {
         </Grid>
        
         </Container>
-    </Layout>
+    </MotionLayout>
+    </motion.div>
   );
 }
 

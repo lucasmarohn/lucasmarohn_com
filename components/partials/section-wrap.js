@@ -5,7 +5,7 @@ import VisibilitySensor from "react-visibility-sensor";
 
 const MotionBox = motion(Box)
 
-export default function SectionWrap({ bg = null, my, py, delay = 0, noAnimation, children }) {
+export default function SectionWrap({ bg = null, my, py, delay = 0, noAnimation = false, children }) {
   const controls = useAnimation()
   if(noAnimation) {
     return (
