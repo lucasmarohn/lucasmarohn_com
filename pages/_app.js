@@ -78,31 +78,24 @@ export const theme = extendTheme({
   },
   styles: {
     global: ({ colorMode }) => ({
-      "html, body": {
-        fontFamily: "'Space Grotesk', Segoe UI, Roboto",
-        letterSpacing: ".02em",
-        lineHeight: "28px",
-        fontSize: "18px",
-      },
-    }),
-  },
-  styles: {
-    global: ({ colorMode }) => ({
       body: {
         fontSize: "18px",
         lineHeight: "150%",
+        fontFamily: "SpaceGrotesk",
         backgroundColor: colorMode === "light" ? "gray.25" : "gray.800",
         color: colorMode === "light" ? "gray.600" : "gray.200",
+        letterSpacing: ".02em",
+        lineHeight: "28px",
       },
     }),
   },
   components: {
     StatNumber: {
-      fontFamily: "Space Grotesk, Radio Grotesk",
+      fontFamily: "SpaceGrotesk, Radio Grotesk",
     },
     Button: {
       baseStyle: ({ colorMode }) => ({
-        fontFamily: "Space Grotesk, Radio Grotesk",
+        fontFamily: "SpaceGrotesk, Radio Grotesk",
         fontWeight: 600,
         letterSpacing: ".03em",
         fontSize: "18px",
@@ -189,7 +182,7 @@ export const theme = extendTheme({
         fontSize: ["18px", null, "22px"],
         color: colorMode === "light" ? "gray.500" : "gray.200",
         lineHeight: "150%",
-        fontFamily: "Space Grotesk",
+        fontFamily: "'SpaceGrotesk'",
       }),
       sizes: {
         "3xl": {
@@ -218,7 +211,7 @@ export const theme = extendTheme({
     },
     Heading: {
       baseStyle: (props) => ({
-        fontFamily: '"Space Grotesk"',
+        fontFamily: '"SpaceGrotesk"',
         fontWeight: "bold",
         width: "100%",
         color: props.colorMode === "light" ? "gray.800" : "white.100",
