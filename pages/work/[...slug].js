@@ -41,7 +41,6 @@ export default function CaseStudy({ data }) {
     }
   };
   return (
-    <motion.div exit={{opacity: 0}} initial={{opacity: 0}} animate={{opacity: 1}}>
     <Layout>
       <Head>
         <title>{data.title} Case Study | voidmade</title>
@@ -90,7 +89,6 @@ export default function CaseStudy({ data }) {
         })}
       </VStack>
     </Layout>
-    </motion.div>
   );
 }
 

@@ -74,6 +74,7 @@ export function CaseStudyHeroDesktop({
       w="100%"
       bg="transparent"
       layoutId={`cs-article-${layoutIdSuffix}`}
+      
     >
       <Grid templateColumns="100%" alignItems="center" gap={[10, null, 0]}>
         <Grid
@@ -105,13 +106,12 @@ export function CaseStudyHeroDesktop({
           
         </Grid>
       </Grid>
-      <MotionBox boxShadow="0 2rem 2rem rgba(0,50,100,0)">
+      <MotionBox>
         <Grid templateColumns="100%" alignItems="center" gap={[10, null, 0]}>
 
           <MotionBox
             layoutId={`cs-thumb-${layoutIdSuffix}`}
             overflow="hidden"
-            type="crossfade"
             w="100%"
             
           >

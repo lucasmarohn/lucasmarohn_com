@@ -5,6 +5,9 @@ import { Box, VStack, Heading, Text, SimpleGrid } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
+import SectionWrap from '../components/partials/section-wrap'
+import Testimonial from '../components/testimonial'
+
 import Hero from "../components/blocks/hero";
 
 const data = [
@@ -32,20 +35,20 @@ const data = [
 
 import { stagger, fadeUpIn } from '../src/utils/framer-variants'
 
-const MotionDiv = motion("div");
+const MotionBox = motion(Box);
 const MotionSimpleGrid = motion(SimpleGrid);
 
 export default function Home() {
   return (
     <Layout>
       <Head>
-        <title>voidmade</title>
+        <title>Emergence Design</title>
       </Head>
 
       <Hero
         minH={["calc(100vh - 72px * 2)", "50vh"]}
         maxW="1200"
-        headline="WELCOME TO OUR CONSCIOUS"
+        headline="Harness the power of story"
         title="Your product exceeds your customers needs, your message should too."
         description="Use empathy, design, and storytelling to enable your brand to speak to your audience with authenticity and resonance."
         button={{
@@ -65,8 +68,7 @@ export default function Home() {
               variants={stagger}
             >
               {data.map((item) => (
-                <MotionDiv
-                  className="motion-dev"
+                <MotionBox
                   key={item.heading}
                   variants={fadeUpIn}
                 >
@@ -74,11 +76,29 @@ export default function Home() {
                     <Heading size="lg">{item.heading}</Heading>
                     <Text>{item.text}</Text>
                   </VStack>
-                </MotionDiv>
+                </MotionBox>
               ))}
             </MotionSimpleGrid>
         )}
+
+
       </Container>
+
+
+      <SectionWrap>
+        <Container>
+        <SimpleGrid columns={[1, 2]} gap="3rem">
+          <Testimonial 
+            quote="I’m blown away by the results. I'm seeing 2X ROI for over the last 90 days for my line of digital products." 
+            author="Don Mupasi" title="Owner, Motion Squared" image="/images/testimonials/don.jpg" />
+
+          <Testimonial 
+            quote="We profitably 4x’d my eCommerce business in one month using Storybrand and paid advertising." 
+            author="Josh Herman" title="Founder, Mutt Couture" image="/images/testimonials/josh.jpg" />
+        </SimpleGrid>
+        </Container>
+      </SectionWrap>
+
     </Layout>
   );
 }

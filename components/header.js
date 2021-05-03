@@ -7,6 +7,7 @@ import {
   IconButton,
   Heading,
   useBreakpointValue,
+  useTheme,
 } from "@chakra-ui/react";
 import { useColorMode, useColorModeValue } from "@chakra-ui/react";
 import {
@@ -20,7 +21,7 @@ import {
 } from "react-icons/bi";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { motion } from "framer-motion";
+import { AnimateSharedLayout, motion } from "framer-motion";
 
 const MotionBox = motion(Box);
 const MotionButton = motion(Button);
@@ -55,9 +56,14 @@ export default function Header() {
       href: "/contact",
     },
   ];
-
+  return <HeaderDesktop router={router}
+  bg={bg}
+  borderColor={borderColor}
+  boxShadow={boxShadow}
+  boxShadowBottom={boxShadowBottom}
+  navItems={navItems} />
   return (
-    <>
+    <AnimateSharedLayout>
       {useBreakpointValue({
         base: (
           <HeaderMobile
@@ -69,7 +75,7 @@ export default function Header() {
             navItems={navItems}
           />
         ),
-        md: (
+        lg: (
           <HeaderDesktop
             router={router}
             bg={bg}
@@ -80,7 +86,7 @@ export default function Header() {
           />
         ),
       })}
-    </>
+    </AnimateSharedLayout>
   );
 }
 
@@ -88,15 +94,13 @@ function HeaderDesktop({
   navItems,
   router,
   bg,
-  borderColor,
-  boxShadow,
-  boxShadowBottom,
 }) {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Grid
+      layoutId="nav"
       templateColumns={["1fr auto 1fr"]}
-      px={[0, null, "1rem"]}
+      px={[0, null, null, "1rem"]}
       borderBottom="1px solid"
       borderColor={useColorModeValue("gray.100", "gray.900")}
       top="0"
@@ -104,12 +108,25 @@ function HeaderDesktop({
       zIndex={[10]}
       bg={[bg]}
     >
-      <Flex top="0" justify="space-between" p={["2rem"]} zIndex="100" bg={bg}>
-        <Heading as="span" size="lg">
-          <Link href="/">
-            <a>voidmade</a>
-          </Link>
-        </Heading>
+      <Flex
+        top="0"
+        justify="flex-start"
+        align="center"
+        p={['1.5rem', null, null, "2rem"]}
+        zIndex="100"
+        bg={bg}
+      >
+        <Link href="/" passHref>
+          <Heading
+            as="a"
+            fontSize="22px"
+            className={useColorModeValue('', "gradient-mask-primary")}
+            w="auto"
+          >
+            emergence
+          </Heading>
+        </Link>
+
         <IconButton
           display={["none"]}
           icon={useColorModeValue(<BiMoon />, <BiSun />)}
@@ -117,21 +134,22 @@ function HeaderDesktop({
         />
       </Flex>
 
-      <Box bottom="0" w="100%" zIndex="100">
+      
+      <Box 
+      position={["fixed", null, null, "static"]}
+      bottom="0" w="100%" zIndex="100">
         <Flex
           justify="space-between"
           align="center"
           width="100%"
-          p={["2rem"]}
-          borderTop="1px solid"
-          borderColor={borderColor}
+          p={['.5rem', null, "2rem"]}
           bg={bg}
         >
           <HStack
-            justifyContent="space-between"
+            justifyContent={["space-around", "space-between"]}
             w="100%"
             size="md"
-            spacing="1rem"
+            spacing={[0, "1rem"]}
           >
             {navItems &&
               navItems.map(({ title, icon, href }, idx) => {
@@ -147,9 +165,12 @@ function HeaderDesktop({
                         variant="ghost"
                         bg="transparent"
                         border="0"
+                        px="1rem"
                         _hover={{
                           bg: useColorModeValue("gray.50", "gray.800"),
-                          boxShadow: "0 0 1px 1px rgba(255,255,255,.2)",
+                        }}
+                        _active={{
+                          bg: useColorModeValue("gray.50", "gray.800"),
                         }}
                         leftIcon={
                           <Icon
@@ -174,28 +195,15 @@ function HeaderDesktop({
                     </Link>
                     {isActive && (
                       <MotionBox
-                        opacity=".1"
                         layoutId="nav-active"
-                        bg={useColorModeValue("brand.primary.400", "gray.800")}
+                        bg={useColorModeValue("gray.50", "gray.900")}
                         position="absolute"
-                        initial={useColorModeValue(
-                          {
-                            opacity: 0.1,
-                          },
-                          {}
-                        )}
-                        animate={useColorModeValue(
-                          {
-                            opacity: 0.1,
-                          },
-                          {}
-                        )}
                         top="0"
                         left="0"
                         right="0"
                         bottom="0"
                         zIndex="1"
-                        borderRadius=".5rem"
+                        borderRadius="10px"
                       />
                     )}
                   </Box>
@@ -204,15 +212,61 @@ function HeaderDesktop({
           </HStack>
         </Flex>
       </Box>
-      <IconButton
-        alignSelf="center"
-        justifySelf="end"
-        display={["none", null, "flex"]}
-        color={useColorModeValue("gray.400", null)}
-        bg={useColorModeValue("gray.50", null)}
-        icon={useColorModeValue(<BiMoon />, <BiSun />)}
-        onClick={toggleColorMode}
-      />
+
+      <HStack justifySelf="end" gridColumn={[3]} pr={['10px', 0]}>
+        <Link id="chat" href="/contact" passHref>
+          <Button 
+            display={['none', null, null, 'flex']}
+            as="a"
+            alignSelf="center"
+            h="40px"
+            py={['10px', "20px"]}
+            px={['20px', '20px']}
+            justifySelf="center"
+            bg={useColorModeValue('gray.25', 'gray.900')}
+            border="2px solid"
+            borderColor={useColorModeValue('brand.primary.400', 'brand.primary.300')}
+            fontSize={['12px', "14px"]}
+            color={useColorModeValue('gray.900', 'white.100')}
+            borderRadius="3rem"
+            flexDirection="row-reverse"
+            alignContent="center"
+            justifyContent="center"
+            textDecoration="none"
+            w="auto"
+            id="chat"
+            fontWeight="300"
+            _hover={{
+              bg: 'brand.primary.300',
+              color: "gray.900",
+              borderColor: useColorModeValue('brand.primary.300', 'brand.primary.300'),
+            }}
+            _active={{
+              bg: 'brand.primary.300',
+              color: "gray.900"
+            }}
+          >
+            <Box as="span" className="label" transform="translateY(1px)">Talk to us</Box>
+            <Box as="span" className="typing" transform="translateY(1px)">
+              <Box as="span" className="circle" bg={useColorModeValue('brand.primary.400', 'white')}></Box>
+              <Box as="span" className="circle" bg={useColorModeValue('brand.primary.400', 'white')}></Box>
+              <Box as="span" className="circle" bg={useColorModeValue('brand.primary.400', 'white')}></Box>
+            </Box>
+          </Button>
+        </Link>
+        <IconButton
+          alignSelf="center"
+          justifySelf="end"
+          color={useColorModeValue("gray.400", null)}
+          variant="link"
+          bg="transparent"
+          _hover={{
+            color: 'brand.primary.300'
+          }}
+          icon={useColorModeValue(<BiMoon />, <BiSun />)}
+          onClick={toggleColorMode}
+        />
+      </HStack>
     </Grid>
   );
 }
@@ -227,7 +281,9 @@ function HeaderMobile({
 }) {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <Grid
+    <AnimateSharedLayout>
+      <Grid
+      layoutId="nav"
       templateColumns="100%"
       px="0"
       borderBottom="1px solid"
@@ -243,11 +299,16 @@ function HeaderMobile({
         zIndex="100"
         bg={bg}
       >
-        <Heading as="span" size="lg">
-          <Link href="/">
-            <a>voidmade</a>
-          </Link>
-        </Heading>
+      <Link href="/" passHref>
+          <Heading
+            as="a"
+            fontSize="22px"
+            className={useColorModeValue('', "gradient-mask-primary")}
+            w="auto"
+          >
+            emergence
+          </Heading>
+        </Link>
         <IconButton
           alignSelf="center"
           justifySelf="end"
@@ -322,7 +383,6 @@ function HeaderMobile({
                     </Link>
                     {isActive && (
                       <MotionBox
-                        opacity=".1"
                         layoutId="nav-active"
                         bg={useColorModeValue("brand.primary.400", "gray.700")}
                         position="absolute"
@@ -330,7 +390,6 @@ function HeaderMobile({
                           {
                             opacity: 0.1,
                           },
-                          {}
                         )}
                         animate={useColorModeValue(
                           {
@@ -343,7 +402,7 @@ function HeaderMobile({
                         right="0"
                         bottom="0"
                         zIndex="1"
-                        borderRadius=".5rem"
+                        borderRadius="10px"
                       />
                     )}
                   </Box>
@@ -353,6 +412,7 @@ function HeaderMobile({
         </Flex>
       </Box>
     </Grid>
+    </AnimateSharedLayout>
   );
 }
 

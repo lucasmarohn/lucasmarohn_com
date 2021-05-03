@@ -19,7 +19,7 @@ import { motion } from "framer-motion";
 import { fadeUpIn, stagger } from "../src/utils/framer-variants";
 import { getCaseStudyList } from "./api/graphql/case-study";
 import SectionWrap from "../components/partials/section-wrap";
-import { MdCheckCircle } from "react-icons/md";
+import { MdCheck, MdCheckCircle } from "react-icons/md";
 import Image from "next/image";
 import Hero from "../components/blocks/hero";
 import Link from "next/link";
@@ -37,7 +37,7 @@ export default function Team({ caseStudyList }) {
       <Hero
         maxW="900"
         headline="WHERE CURIOSITY COMES FIRST"
-        title="We’re a team of multidisciplinary storytellers and problem solvers"
+        title="We’re a team of multidisciplinary story tellers and problem solvers"
         description="We use empathy and storytelling to guide your product development,
             delight your customers, and connect to your audience in a way that
             converts."
@@ -47,7 +47,7 @@ export default function Team({ caseStudyList }) {
         <Container>
           <MotionSimpleGrid columns={[1, null, null, 2, 4]} gap="3rem" variants={stagger} animate="animate" transition={{duration: .2, ease: 'easeOut'}}>
             <MotionVStack align="start" variants={fadeUpIn} initial="hidden" animate="visible" >
-              <Heading size="lg">Storytelling and Strategy</Heading>
+              <Heading size="lg">Storytelling <br/>and Strategy</Heading>
               <Text>
                 Use the enduring power of story to connect with your audience on
                 an emotional level and build authentic, profitable, and lasting
@@ -55,7 +55,7 @@ export default function Team({ caseStudyList }) {
               </Text>
             </MotionVStack>
             <MotionVStack align="start" variants={fadeUpIn} initial="hidden" animate="visible" >
-              <Heading size="lg">Branding and Identity</Heading>
+              <Heading size="lg">Branding <br/> and Identity</Heading>
               <Text>
                 Branding is the emotional response people have when they imagine
                 your business. Great brands are engaging, memorable, and
@@ -63,7 +63,7 @@ export default function Team({ caseStudyList }) {
               </Text>
             </MotionVStack>
             <MotionVStack align="start" variants={fadeUpIn} initial="hidden" animate="visible" >
-              <Heading size="lg">Delightful Digital Experiences</Heading>
+              <Heading size="lg">Delightful Digital <br/>Experiences</Heading>
               <Text>
                 There are a thousand great ways to engage with your audience and
                 create delight online. We help you navigate the sea of options
@@ -71,7 +71,7 @@ export default function Team({ caseStudyList }) {
               </Text>
             </MotionVStack>
             <MotionVStack align="start" variants={fadeUpIn} initial="hidden" animate="visible" >
-              <Heading size="lg">Consulting and Problem Solving</Heading>
+              <Heading size="lg">Consulting and <br/>Problem Solving</Heading>
               <Text>
                 Want an independent expert opinion? We love to share our
                 expertise and help you navigate the immeasurable opportunities
@@ -82,33 +82,33 @@ export default function Team({ caseStudyList }) {
         </Container>
       </SectionWrap>
 
-      <SectionWrap bg={useColorModeValue("gray.100", "gray.900")}>
+      <SectionWrap bg={useColorModeValue("gray.50", "gray.900")}>
         <Container maxW="800px">
           <VStack align="flex-start" spacing="2rem" width="auto">
             <Heading variant="h4" size="lg" as="h2" width="100%">
               You should get in touch with us if
             </Heading>
             <VStack as={UnorderedList} align="start">
-              <HStack as={ListItem} align="baseline">
-                <ListIcon as={MdCheckCircle} color="brand.primary.400" />
+              <HStack as={ListItem} align="start">
+                <ListIcon as={MdCheck} mt="2px" fontSize="22px" color="brand.primary.400" />
                 <Text>
                   You believe your business should serve rather than sell
                 </Text>
               </HStack>
-              <HStack as={ListItem} align="baseline">
-                <ListIcon as={MdCheckCircle} color="brand.primary.400" />
+              <HStack as={ListItem} align="start">
+                <ListIcon as={MdCheck} mt="2px" fontSize="22px" color="brand.primary.400" />
                 <Text>
                   You embrace the process of change and transformation
                 </Text>
               </HStack>
-              <HStack as={ListItem} align="baseline">
-                <ListIcon as={MdCheckCircle} color="brand.primary.400" />
+              <HStack as={ListItem} align="start">
+                <ListIcon as={MdCheck} mt="2px" fontSize="22px" color="brand.primary.400" />
                 <Text>
                   You enjoy being exposed to new ideas and perspectives
                 </Text>
               </HStack>
-              <HStack as={ListItem} align="baseline">
-                <ListIcon as={MdCheckCircle} color="brand.primary.400" />
+              <HStack as={ListItem} align="start">
+                <ListIcon as={MdCheck} mt="2px" fontSize="22px" color="brand.primary.400" />
                 <Text>
                   You prefer measurable results and data-driven decisions
                 </Text>

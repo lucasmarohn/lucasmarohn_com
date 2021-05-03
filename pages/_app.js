@@ -6,46 +6,72 @@ import {
 import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import "../styles/globals.css";
 
+import Router from 'next/router'
+
 function MyApp({ Component, pageProps }) {
+  Router.onRouteChangeComplete = () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+    });
+  };
   return (
-    <AnimatePresence exitBeforeEnter>
-      <AnimateSharedLayout>
+    <AnimateSharedLayout>
+      <AnimatePresence exitBeforeEnter>
         <ChakraProvider theme={theme}>
           <Component {...pageProps} />
         </ChakraProvider>
-      </AnimateSharedLayout>
-    </AnimatePresence>
+      </AnimatePresence>
+    </AnimateSharedLayout>
   );
 }
 
 export default MyApp;
 
-const theme = extendTheme({
+export const theme = extendTheme({
   initialColorMode: "dark",
   useSystemColorMode: false,
   colors: {
     brand: {
       primary: {
-        100: "#9E90F5",
-        300: "#877AEC",
-        400: "#6C5DD2",
+        100: "hsl(147.5, 100%, 64.5%)",
+        300: "hsl(147.5, 100%, 64.5%)",
+        400: "hsl(162.1, 69.5%, 39.8%)",
       },
     },
-    // gray: {
-    //   700: '#1F2027',
-    //   800: '#181A21',
-    //   900: '#14161C',
-    // },
+    gray: {
+      25: "#FBFCFE",
+      50: "#f0f6fc",
+      100: "#c9d1d9",
+      200: "#b1bac4",
+      300: "#8b949e",
+      400: "#6e7681",
+      500: "#484f58",
+      600: "#1c1f22",
+      700: "#1c1f22",
+      800: "#0f0f0f",
+      900: "#090909",
+      1000: "#000000",
+    },
     white: {
       100: "rgba(255,255,255,1)",
+      80: "rgba(255,255,255,.8)",
+      70: "rgba(255,255,255,.7)",
+      60: "rgba(255,255,255,.6)",
       50: "rgba(255,255,255,.5)",
+      40: "rgba(255,255,255,.4)",
       30: "rgba(255,255,255,.3)",
+      20: "rgba(255,255,255,.2)",
+      10: "rgba(255,255,255,.1)",
     },
   },
   styles: {
     global: ({ colorMode }) => ({
       "html, body": {
-        fontFamily: "Marcin Antique, Segoe UI, Roboto",
+        fontFamily: "'Space Grotesk', Segoe UI, Roboto",
+        letterSpacing: ".02em",
+        lineHeight: "28px",
+        fontSize: "18px",
       },
     }),
   },
@@ -54,23 +80,26 @@ const theme = extendTheme({
       body: {
         fontSize: "18px",
         lineHeight: "150%",
-        backgroundColor: colorMode === "light" ? "gray.50" : "gray.800",
-        color: colorMode === "light" ? "gray.600" : "gray.300",
+        backgroundColor: colorMode === "light" ? "gray.25" : "gray.800",
+        color: colorMode === "light" ? "gray.600" : "gray.200",
       },
     }),
   },
   components: {
     StatNumber: {
-      fontFamily: "Marcin Antique, Radio Grotesk",
+      fontFamily: "Space Grotesk, Radio Grotesk",
     },
     Button: {
       baseStyle: ({ colorMode }) => ({
-        fontFamily: "Marcin Antique, Radio Grotesk",
-        fontWeight: 400,
+        fontFamily: "Space Grotesk, Radio Grotesk",
+        fontWeight: 600,
         letterSpacing: ".03em",
-        textShadow:
-          colorMode === "light" ? "none" : "1px 1px 2px rgba(0,0,0,.3)",
-        bg: colorMode === "light" ? "gray.50" : "gray.500",
+        fontSize: "18px",
+        bg: colorMode === "light" ? "gray.50" : "gray.600",
+        borderRadius: "10px",
+        _hover: {
+          bg: colorMode === "light" ? "gray.100" : "gray.500",
+        },
         _focus: {
           boxShadow: "0",
         },
@@ -83,23 +112,18 @@ const theme = extendTheme({
       },
       variants: {
         primary: ({ colorMode }) => ({
-          bg: colorMode === "light" ? "brand.primary.100" : "brand.primary.300",
-          color: "white",
-          boxShadow: "0 .5rem 1rem rgba(72, 50, 211, 0.15)",
-          bgGradient:
-            "linear-gradient(45deg, brand.primary.300, brand.primary.400)",
-          borderTop: "2px solid",
-          borderBottom: "2px solid",
-          borderTopColor: "brand.primary.100",
-          borderBottomColor: "brand.primary.300",
-          textShadow: "1px 1px 0px rgba(0,0,0,.3)",
+          bg: colorMode === "light" ? "brand.primary.400" : "brand.primary.300",
+          color: colorMode === "light" ? "white" : "gray.900",
+          boxShadow: "0 0 0 hsl(147.5, 100%, 64.5%)",
+          border: "3px solid transparent",
+          padding: "15px 35px",
+          height: "auto",
+          minHeight: "48px",
           _hover: {
-            transform: "translateY(-5px)",
-            boxShadow: "0 1rem 2rem rgba(72, 50, 211, 0.35)",
-            bgGradient:
-              colorMode === "light"
-                ? "linear-gradient(45deg, brand.primary.300, brand.primary.400)"
-                : "linear-gradient(45deg, brand.primary.300, brand.primary.400)",
+            bg: colorMode === "light" ? "brand.primary.400" : "brand.primary.300",
+            outline: 0,
+            borderColor: colorMode === "light" ? "gray.50" : "gray.900",
+            boxShadow: colorMode === "light" ? "0 0 0 .2rem hsl(162.1, 69.5%, 39.8%)" : "0 0 0 .2rem hsl(147.5, 100%, 64.5%)",
           },
         }),
         secondary: ({ colorMode }) => ({
@@ -148,8 +172,9 @@ const theme = extendTheme({
       baseStyle: ({ colorMode }) => ({
         fontWeight: 400,
         fontSize: ["18px", null, "22px"],
-        color: colorMode === "light" ? "gray.600" : "gray.300",
+        color: colorMode === "light" ? "gray.500" : "gray.200",
         lineHeight: "150%",
+        fontFamily: "Space Grotesk",
       }),
       sizes: {
         "3xl": {
@@ -178,14 +203,14 @@ const theme = extendTheme({
     },
     Heading: {
       baseStyle: (props) => ({
-        fontFamily: '"Marcin Antique"',
+        fontFamily: '"Space Grotesk"',
         fontWeight: "bold",
         width: "100%",
-        color: props.colorMode === "light" ? "gray.800" : "gray.100",
+        color: props.colorMode === "light" ? "gray.800" : "white.100",
       }),
       variants: {
         h1: {
-          fontSize: ["30px", "36px", "48px", "64px"],
+          fontSize: ["28px", "34px", "38px", "42px"],
         },
         h2: {
           fontSize: ["28px", "32px", "36px", "48px"],
@@ -200,7 +225,7 @@ const theme = extendTheme({
           letterSpacing: ".2em",
           color:
             props.colorMode === "light"
-              ? "brand.primary.300"
+              ? "brand.primary.400"
               : "brand.primary.100",
           fontSize: ["12px", "14px", "16px"],
           textTransform: "uppercase",

@@ -28,7 +28,7 @@ export default function Hero({
   children,
 }) {
   return (
-    <Container>
+    <Container maxW="960px">
       <MotionVStack
         textAlign="center"
         py="5rem"
@@ -57,7 +57,7 @@ export default function Hero({
           </MotionHeading>
         )}
         {description && (
-          <MotionText variants={fadeUpIn} variant="large" maxW="900">
+          <MotionText variants={fadeUpIn} variant="large" maxW="700">
             {description}
           </MotionText>
         )}

@@ -25,8 +25,8 @@ export default function Footer() {
           textAlign={['center','none']}
         >
           <VStack align="left" textAlign={[null, "left"]}>
-            <Heading size="md">voidmade</Heading>
-            <Text fontSize="xs">&copy; 2021 voidmade</Text>
+            <Heading size="md">Emergence</Heading>
+            <Text fontSize="xs">&copy; 2021 emergence</Text>
           </VStack>
 
           <VStack align={[null, "right"]}>
