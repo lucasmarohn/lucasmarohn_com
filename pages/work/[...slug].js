@@ -2,8 +2,6 @@ import {
   getAllCaseStudyURI,
   getCaseStudyData,
 } from "../api/graphql/case-study";
-
-import Head from "next/head";
 import Layout from "../../components/layout";
 import SectionWrap from '../../components/partials/section-wrap'
 import {
@@ -18,7 +16,7 @@ import Columns from "../../components/blocks/columns";
 import FullWidthImage from "../../components/blocks/full-width-image";
 import CaseStudyHero from '../../components/case-study-hero'
 
-import { motion} from 'framer-motion'
+import { NextSeo } from 'next-seo'
 
 export default function CaseStudy({ data }) {
   const layoutIdSuffix = data.databaseId;
@@ -42,9 +40,16 @@ export default function CaseStudy({ data }) {
   };
   return (
     <Layout>
-      <Head>
-        <title>{data.title} Case Study | voidmade</title>
-      </Head>
+      <NextSeo
+      title={`Case Study | ${data.title}`}
+      description={data.excerpt}
+      canonical={`https://emergence.design/work/${data.slug}`}
+      openGraph={{
+        title: `Case Study | ${data.title}`,
+        description: data.excerpt,
+        site_name: 'Emergence',
+      }}
+    />
       <CaseStudyHero
         key={data.databaseId}
         animate="visible"

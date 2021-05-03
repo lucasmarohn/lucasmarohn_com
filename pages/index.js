@@ -9,6 +9,7 @@ import SectionWrap from '../components/partials/section-wrap'
 import Testimonial from '../components/testimonial'
 
 import Hero from "../components/blocks/hero";
+import { NextSeo } from 'next-seo'
 
 const data = [
   {
@@ -41,9 +42,16 @@ const MotionSimpleGrid = motion(SimpleGrid);
 export default function Home() {
   return (
     <Layout>
-      <Head>
-        <title>Emergence Design</title>
-      </Head>
+      <NextSeo
+          title={`Emergence Brand Design`}
+          description="Harnessing the power of story, empathy, and design to help businesses engage with their audience in a meaningful way and drive measurable results."
+          canonical="https://emergence.design/"
+          openGraph={{
+            title: `Emergence Brand Design`,
+            description: "Harnessing the power of story, empathy, and design to help businesses engage with their audience in a meaningful way and drive measurable results.",
+            site_name: 'Emergence',
+          }}
+    />
 
       <Hero
         minH={["calc(100vh - 72px * 2)", "50vh"]}

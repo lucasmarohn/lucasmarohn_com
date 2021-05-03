@@ -91,7 +91,7 @@ export function CaseStudyItemDesktop({
       <MotionBox boxShadow={useColorModeValue("0 .5rem 1rem rgba(0,50,100,.2)", null)} position="static">
         <Grid templateColumns="100%" alignItems="center" gap={[0]}>
           <Grid
-            templateColumns="100%"
+            templateColumns={["100%", null,  null, '2fr 1fr']}
             gap="1rem"
             gridRow="1"
             p={['2rem', '2.5rem', "5rem"]}
@@ -159,6 +159,7 @@ export function CaseStudyItemDesktop({
                   srcSet={thumbImage?.srcSet}
                   layout="fill"
                   objectFit="cover"
+                  alt={thumbImage?.altText}
                 />
               ) : (
                 <Box bg="gray.100" />
@@ -252,7 +253,7 @@ export function CaseStudyItemMobile({
           >
             <AspectRatio ratio={16 / 8} maxH="100vh" w="100%" zIndex="0">
               {thumbImage?.sourceUrl ? (
-                <Image src={thumbImage?.sourceUrl} srcSet={thumbImage?.srcSet} layout="fill" objectFit="cover" />
+                <Image src={thumbImage?.sourceUrl} srcSet={thumbImage?.srcSet} alt={thumbImage?.altText} layout="fill" objectFit="cover" />
               ) : (
                 <Box bg="gray.100" />
               )}

@@ -24,6 +24,8 @@ import Image from "next/image";
 import Hero from "../components/blocks/hero";
 import Link from "next/link";
 
+import { NextSeo } from 'next-seo'
+
 const MotionVStack = motion(VStack);
 const MotionSimpleGrid = motion(SimpleGrid);
 
@@ -31,9 +33,16 @@ export default function Team({ caseStudyList }) {
   let delay = 0;
   return (
     <Layout>
-      <Head>
-        <title>About</title>
-      </Head>
+      <NextSeo
+        title={`About Emergence`}
+        description="We’re a team of multidisciplinary story tellers and problem solvers"
+        canonical={`https://emergence.design/about`}
+        openGraph={{
+          title: `About Emergence`,
+          description: "We’re a team of multidisciplinary story tellers and problem solvers",
+          site_name: 'Emergence',
+        }}
+    />
       <Hero
         maxW="900"
         headline="WHERE CURIOSITY COMES FIRST"

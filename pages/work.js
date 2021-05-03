@@ -12,14 +12,21 @@ import SectionWrap from '../components/partials/section-wrap'
 
 import Hero from '../components/blocks/hero'
 
-const MotionLayout = motion(Layout)
+import { NextSeo } from 'next-seo'
 
 export default function Work({caseStudyList}) {
   return (
     <Layout>
-      <Head>
-        <title>Testing</title>
-      </Head>
+      <NextSeo
+          title={`Case Studies | Emergence Design`}
+          description="Explore the successes we've delivered to past and current clients."
+          canonical="https://emergence.design/"
+          openGraph={{
+            title: `Emergence Brand Design`,
+            description: "Explore the successes we've delivered to past and current clients.",
+            site_name: 'Emergence',
+          }}
+    />
       <Hero
         maxW="900"
         headline="PAST PROJECTS"

@@ -7,7 +7,7 @@ export default function Testimonial({quote, author, title, image, bg, background
       {quote}
     </Text>
     <HStack w="100%" spacing="1rem">
-      {image && <Box borderRadius="50%" overflow="hidden"><Image src={image} width="50px" height="50px" /></Box>}
+      {image && <Box borderRadius="50%" overflow="hidden"><Image src={image} width="50px" height="50px" alt={image?.altText} /></Box>}
       <VStack spacing="0">
         <Text fontSize="lg" w="100%" fontWeight="bold">{author}</Text>
         <Text fontSize="sm" w="100%">{title}</Text>

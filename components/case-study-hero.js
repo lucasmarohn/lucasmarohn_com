@@ -122,6 +122,7 @@ export function CaseStudyHeroDesktop({
                   srcSet={thumbImage?.srcSet}
                   layout="fill"
                   objectFit="cover"
+                  alt={thumbImage?.altText}
                 />
               ) : (
                 <Box bg="gray.100" />

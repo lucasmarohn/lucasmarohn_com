@@ -6,7 +6,8 @@ import {
 import { AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import "../styles/globals.css";
 
-import Router from 'next/router'
+import Router from "next/router";
+import { NextSeo } from "next-seo";
 
 function MyApp({ Component, pageProps }) {
   Router.onRouteChangeComplete = () => {
@@ -19,6 +20,16 @@ function MyApp({ Component, pageProps }) {
     <AnimateSharedLayout>
       <AnimatePresence exitBeforeEnter>
         <ChakraProvider theme={theme}>
+          <NextSeo
+            title={`Emergence Brand Design`}
+            description="Harnessing the power of story, empathy, and design to help businesses engage with their audience in a meaningful way and drive measurable results."
+            openGraph={{
+              title: `Emergence Brand Design`,
+              description:
+                "Harnessing the power of story, empathy, and design to help businesses engage with their audience in a meaningful way and drive measurable results.",
+              site_name: "Emergence",
+            }}
+          />
           <Component {...pageProps} />
         </ChakraProvider>
       </AnimatePresence>
@@ -29,7 +40,7 @@ function MyApp({ Component, pageProps }) {
 export default MyApp;
 
 export const theme = extendTheme({
-  initialColorMode: "dark",
+  initialColorMode: "light",
   useSystemColorMode: false,
   colors: {
     brand: {
@@ -120,10 +131,14 @@ export const theme = extendTheme({
           height: "auto",
           minHeight: "48px",
           _hover: {
-            bg: colorMode === "light" ? "brand.primary.400" : "brand.primary.300",
+            bg:
+              colorMode === "light" ? "brand.primary.400" : "brand.primary.300",
             outline: 0,
             borderColor: colorMode === "light" ? "gray.50" : "gray.900",
-            boxShadow: colorMode === "light" ? "0 0 0 .2rem hsl(162.1, 69.5%, 39.8%)" : "0 0 0 .2rem hsl(147.5, 100%, 64.5%)",
+            boxShadow:
+              colorMode === "light"
+                ? "0 0 0 .2rem hsl(162.1, 69.5%, 39.8%)"
+                : "0 0 0 .2rem hsl(147.5, 100%, 64.5%)",
           },
         }),
         secondary: ({ colorMode }) => ({

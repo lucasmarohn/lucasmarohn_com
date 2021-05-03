@@ -14,7 +14,7 @@ import {
 import { gravityFormData } from "../pages/api/graphql/contact-form";
 import Hero from "../components/blocks/hero";
 import SectionWrap from "../components/partials/section-wrap";
-
+import { NextSeo } from 'next-seo'
 const WP_SITE_URL = process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL;
 
 
@@ -69,9 +69,15 @@ export default function Contact({ gFormData }) {
   }
   return (
     <Layout>
-      <Head>
-        <title>Testing</title>
-      </Head>
+      <NextSeo
+          title={`Contact Emergence`}
+          description="Ready to help your customer win the day? Let's talk."
+          openGraph={{
+            title: `Contact Emergence`,
+            description: "Ready to help your customer win the day? Let's talk.",
+            site_name: 'Emergence',
+          }}
+    />
 
 
       <Hero headline="START A CONVERSATION" title="Let's build something beautiful together" />
