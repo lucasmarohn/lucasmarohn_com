@@ -76,7 +76,7 @@ export const theme = extendTheme({
   },
   styles: {
     global: ({ colorMode }) => ({
-      body: {
+      "html, body": {
         fontSize: "18px",
         lineHeight: "150%",
         fontFamily: "SpaceGrotesk",
