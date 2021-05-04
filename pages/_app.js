@@ -40,8 +40,6 @@ function MyApp({ Component, pageProps }) {
 export default MyApp;
 
 export const theme = extendTheme({
-  initialColorMode: "light",
-  useSystemColorMode: false,
   colors: {
     brand: {
       primary: {

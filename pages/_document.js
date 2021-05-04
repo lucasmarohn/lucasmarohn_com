@@ -9,8 +9,8 @@ export default class Document extends NextDocument {
         <Head />
         <body style={{height: 'auto', minHeight: '100vh'}}>
           <ColorModeScript initialColorMode={{
-            initialColorMode: "light",
-            useSystemColorMode: false,
+            initialColorMode: "dark",
+            useSystemColorMode: true,
           }} />
           <Main />
           <NextScript />
