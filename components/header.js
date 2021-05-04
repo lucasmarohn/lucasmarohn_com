@@ -116,7 +116,7 @@ function HeaderDesktop({
           justify="space-between"
           align="center"
           width="100%"
-          p={['.5rem', null, "2rem"]}
+          pt={['.5rem', null, "2rem"]}
           pb={['calc(.5rem + 2 * env(safe-area-inset-bottom) )', null, 'calc(2rem + 2 * env(safe-area-inset-bottom))']}
           bg={bg}
         >
