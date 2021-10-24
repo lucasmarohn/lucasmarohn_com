@@ -71,5 +71,4 @@ export async function getStaticProps(context, preview) {
       caseStudyList
     }
   }
-
 }

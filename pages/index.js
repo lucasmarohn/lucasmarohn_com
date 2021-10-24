@@ -10,36 +10,15 @@ import Testimonial from '../components/testimonial'
 
 import Hero from "../components/blocks/hero";
 import { NextSeo } from 'next-seo'
+import { getCaseStudyList } from "./api/graphql/case-study";
 
-const data = [
-  {
-    heading: "Empathize with the emotional needs of your customers",
-    text:
-      "Our process begins with your customers. Together, we uncover their story and identify how your services help them win their day.",
-  },
-  {
-    heading: "Identify the best channels for your unique business goals",
-    text:
-      "We audit your options and determine the best path forward. Even if you have an idea of what the solution looks like.",
-  },
-  {
-    heading: "Discover where your business and customer needs intersect",
-    text:
-      "Great solutions emerge where the needs of your business and your customer overlap. We focus our efforts where it matters.",
-  },
-  {
-    heading: "Iterate and amplify strategies that deliver the best results",
-    text:
-      "After initial launch we audit, test, and optimize your strategy to build on successes, and cull strategies that are less effective.",
-  },
-];
 
 import { stagger, fadeUpIn } from '../src/utils/framer-variants'
 
 const MotionBox = motion(Box);
 const MotionSimpleGrid = motion(SimpleGrid);
 
-export default function Home() {
+export default function Home({ caseStudyList }) {
   return (
     <Layout>
       <NextSeo
@@ -95,18 +74,43 @@ export default function Home() {
 
       <SectionWrap>
         <Container>
-        <SimpleGrid columns={[1, 2]} gap="3rem">
-          <Testimonial 
-            quote="I’m blown away by the results. I'm seeing 2X ROI for over the last 90 days for my line of digital products." 
-            author="Don Mupasi" title="Owner, Motion Squared" image="/images/testimonials/don.jpg" />
+        <Grid
+          templateColumns={["100%"]}
+          alignItems="stretch"
+          w="100%"
+          gap={[10, null, 20]}
+        >
 
-          <Testimonial 
-            quote="We profitably 4x’d my eCommerce business in one month using Storybrand and paid advertising." 
-            author="Josh Herman" title="Founder, Mutt Couture" image="/images/testimonials/josh.jpg" />
-        </SimpleGrid>
+          {caseStudyList && caseStudyList.map(({item}, index) => 
+          <SectionWrap my="0" key={item.databaseId}>
+            <CaseStudyItem
+              
+              animate="visible"
+              variants={fadeUpIn}
+              headline={item.acf_project.headline}
+              transition={{ ease: "easeOut", duration: 0.5, delay: 0.2 }}
+              layoutIdSuffix={item.databaseId}
+              title={item.title}
+              intro={item.excerpt}
+              link={`/work/${item.slug}`}
+              thumbImage={item?.featuredImage?.node}
+              reverse={index % 2}
+            />
+            </SectionWrap>
+          )}
+        </Grid>
         </Container>
       </SectionWrap>
 
     </Layout>
   );
+}
+
+export async function getStaticProps(context, preview) {
+  const caseStudyList = await getCaseStudyList()
+  return {
+    props: {
+      caseStudyList
+    }
+  }
 }

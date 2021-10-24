@@ -9,7 +9,7 @@ const nextConfig = {
     webpack5: true,
   },
   images: {
-    domains: ['voidmade.local','staging.emergence.design', 'app-60708904c1ac183264fb7a04.closte.com'],
+    domains: ['voidmade.local','staging.emergence.design', 'lucasmarohn.com' 'app-60708904c1ac183264fb7a04.closte.com'],
   },
   pwa: {
     disable: process.env.NODE_ENV === 'development',
