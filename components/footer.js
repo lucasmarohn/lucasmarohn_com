@@ -19,20 +19,20 @@ export default function Footer() {
     >
       <SectionWrap my="0" noAnimation>
         <Grid
-          templateColumns={["100%", "1fr 1fr"]}
+          templateColumns={["100%", null, "1fr 1fr"]}
           maxW="1440"
           mx="auto"
           textAlign={['center','none']}
         >
-          <VStack align="left" textAlign={[null, "left"]}>
+          <VStack align="left" textAlign={[null, null, "left"]}>
             <Heading size="md">Lucas Marohn</Heading>
             <Text fontSize="xs">&copy; 2021 Lucas Marohn</Text>
           </VStack>
 
-          <VStack align={[null, "right"]}>
+          <VStack align={[null, null, "right"]}>
             <HStack
-              textAlign={[null, "right"]}
-              justify={['center', "right"]}
+              textAlign={[null, null, "right"]}
+              justify={['center', null, "right"]}
               spacing="20px"
               fontSize={["sm", null, "lg"]}
             >
@@ -41,7 +41,7 @@ export default function Footer() {
               <Link href="/about">About Me</Link>
               <Link href="/contact">Contact</Link>
             </HStack>
-            <Text fontSize="xs" textAlign={[null, "right"]}>
+            <Text fontSize="xs" textAlign={[null, null, "right"]}>
               Privacy Policy
             </Text>
           </VStack>

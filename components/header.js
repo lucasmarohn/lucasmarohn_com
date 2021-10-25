@@ -26,6 +26,8 @@ import { AnimateSharedLayout, motion } from "framer-motion";
 const MotionBox = motion(Box);
 const MotionButton = motion(Button);
 
+import { ChatButton } from "./partials/chat-button";
+
 export default function Header() {
   const bg = useColorModeValue("white", "gray.700");
   const borderColor = useColorModeValue("gray.200", "gray.700");
@@ -91,33 +93,30 @@ function HeaderDesktop({
             fontSize="22px"
             className={useColorModeValue('', "gradient-mask-primary")}
             w="auto"
+            flexShrink="0"
           >
             Lucas Marohn
           </Heading>
         </Link>
 
-        <IconButton
-          display={["none"]}
-          icon={useColorModeValue(<BiMoon />, <BiSun />)}
-          onClick={toggleColorMode}
-        />
+        
       </Flex>
 
       
       <Box 
       position={["fixed", null, null, "static"]}
-      bottom="0" w="100%" zIndex="100">
+      bottom="0" w="100%" zIndex="100" pb="env(safe-area-inset-bottom)">
         <Flex
           justify="space-between"
           align="center"
           width="100%"
           pt={['.5rem', null, "2rem"]}
           px={['.5rem', null, "2rem"]}
-          pb={['calc(.5rem + 2 * env(safe-area-inset-bottom) )', null, 'calc(2rem + 2 * env(safe-area-inset-bottom))']}
+          pb={['1rem', null, '2rem']}
           bg={bg}
         >
           <HStack
-            justifyContent={["space-around", "space-between"]}
+            justifyContent={["space-around", null, "space-between"]}
             w="100%"
             size="md"
             spacing={[0, "1rem"]}
@@ -132,12 +131,15 @@ function HeaderDesktop({
                         as="a"
                         cursor="pointer"
                         position="relative"
-                        zIndex="5"
+                        zIndex={5}
                         variant="ghost"
                         bg="transparent"
                         border="0"
                         px="1rem"
                         _hover={{
+                          bg: useColorModeValue("gray.50", "gray.800"),
+                        }}
+                        _focus={{
                           bg: useColorModeValue("gray.50", "gray.800"),
                         }}
                         _active={{
@@ -167,13 +169,13 @@ function HeaderDesktop({
                     {isActive && (
                       <MotionBox
                         layoutId="nav-active"
-                        bg={useColorModeValue("gray.50", "gray.900")}
+                        bg={useColorModeValue("gray.50", "gray.800")}
                         position="absolute"
                         top="0"
                         left="0"
                         right="0"
                         bottom="0"
-                        zIndex="1"
+                        zIndex={1}
                         borderRadius="10px"
                       />
                     )}
@@ -185,46 +187,7 @@ function HeaderDesktop({
       </Box>
 
       <HStack justifySelf="end" gridColumn={[3]} pr={['10px', 0]}>
-        <Link id="chat" href="/contact" passHref>
-          <Button 
-            display={['none', null, null, 'flex']}
-            as="a"
-            alignSelf="center"
-            h="40px"
-            py={['10px', "20px"]}
-            px={['20px', '20px']}
-            justifySelf="center"
-            bg={useColorModeValue('gray.25', 'gray.900')}
-            border="2px solid"
-            borderColor={useColorModeValue('brand.primary.400', 'brand.primary.300')}
-            fontSize={['12px', "14px"]}
-            color={useColorModeValue('gray.900', 'white.100')}
-            borderRadius="3rem"
-            flexDirection="row-reverse"
-            alignContent="center"
-            justifyContent="center"
-            textDecoration="none"
-            w="auto"
-            id="chat"
-            fontWeight="300"
-            _hover={{
-              bg: 'brand.primary.300',
-              color: "gray.900",
-              borderColor: useColorModeValue('brand.primary.300', 'brand.primary.300'),
-            }}
-            _active={{
-              bg: 'brand.primary.300',
-              color: "gray.900"
-            }}
-          >
-            <Box as="span" className="label" transform="translateY(1px)">Say Hello</Box>
-            <Box as="span" className="typing" transform="translateY(1px)">
-              <Box as="span" className="circle" bg={useColorModeValue('brand.primary.400', 'white')}></Box>
-              <Box as="span" className="circle" bg={useColorModeValue('brand.primary.400', 'white')}></Box>
-              <Box as="span" className="circle" bg={useColorModeValue('brand.primary.400', 'white')}></Box>
-            </Box>
-          </Button>
-        </Link>
+        <Box display={['block', null, null, 'block']}><ChatButton /></Box>
         <IconButton
           alignSelf="center"
           justifySelf="end"

@@ -37,8 +37,8 @@ export default function Contact({}) {
         description="I'll reach out via email initially, from there we can schedule a phone call or a grab virtual coffee"
       />
 
-      <SectionWrap my="0">
-        <Container maxW="70rem">
+      <SectionWrap my="0" marginTop="0">
+        <Container maxW="70rem" marginBottom="5rem">
           <Box
             bg={useColorModeValue("white", "gray.700")}
             padding={["2rem", "5rem"]}
