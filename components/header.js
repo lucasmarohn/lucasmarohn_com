@@ -46,14 +46,9 @@ export default function Header() {
       href: "/work",
     },
     {
-      title: "Team",
+      title: "About Me",
       icon: BiUserCircle,
       href: "/about",
-    },
-    {
-      title: "Say Hi",
-      icon: BiEnvelope,
-      href: "/contact",
     },
   ];
   return <HeaderDesktop router={router}
@@ -97,7 +92,7 @@ function HeaderDesktop({
             className={useColorModeValue('', "gradient-mask-primary")}
             w="auto"
           >
-            emergence
+            Lucas Marohn
           </Heading>
         </Link>
 
@@ -222,7 +217,7 @@ function HeaderDesktop({
               color: "gray.900"
             }}
           >
-            <Box as="span" className="label" transform="translateY(1px)">Talk to us</Box>
+            <Box as="span" className="label" transform="translateY(1px)">Say Hello</Box>
             <Box as="span" className="typing" transform="translateY(1px)">
               <Box as="span" className="circle" bg={useColorModeValue('brand.primary.400', 'white')}></Box>
               <Box as="span" className="circle" bg={useColorModeValue('brand.primary.400', 'white')}></Box>

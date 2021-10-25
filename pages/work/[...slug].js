@@ -43,11 +43,11 @@ export default function CaseStudy({ data }) {
       <NextSeo
       title={`Case Study | ${data.title}`}
       description={data.excerpt}
-      canonical={`https://emergence.design/work/${data.slug}`}
+      canonical={`https://lucasmarohn.com/work/${data.slug}`}
       openGraph={{
         title: `Case Study | ${data.title}`,
         description: data.excerpt,
-        site_name: 'Emergence',
+        site_name: 'Lucas Marohn',
       }}
     />
       <CaseStudyHero

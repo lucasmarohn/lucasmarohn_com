@@ -25,8 +25,8 @@ export default function Footer() {
           textAlign={['center','none']}
         >
           <VStack align="left" textAlign={[null, "left"]}>
-            <Heading size="md">Emergence</Heading>
-            <Text fontSize="xs">&copy; 2021 emergence</Text>
+            <Heading size="md">Lucas Marohn</Heading>
+            <Text fontSize="xs">&copy; 2021 Lucas Marohn</Text>
           </VStack>
 
           <VStack align={[null, "right"]}>
@@ -38,7 +38,7 @@ export default function Footer() {
             >
               <Link href="/">Home</Link>
               <Link href="/work">Work</Link>
-              <Link href="/about">Team</Link>
+              <Link href="/about">About Me</Link>
               <Link href="/contact">Contact</Link>
             </HStack>
             <Text fontSize="xs" textAlign={[null, "right"]}>

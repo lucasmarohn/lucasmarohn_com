@@ -20,7 +20,7 @@ export default function Work({caseStudyList}) {
       <NextSeo
           title={`Case Studies | Emergence Design`}
           description="Explore the successes we've delivered to past and current clients."
-          canonical="https://emergence.design/"
+          canonical="https://lucasmarohn.com/"
           openGraph={{
             title: `Emergence Brand Design`,
             description: "Explore the successes we've delivered to past and current clients.",
@@ -71,5 +71,4 @@ export async function getStaticProps(context, preview) {
       caseStudyList
     }
   }
-
 }
