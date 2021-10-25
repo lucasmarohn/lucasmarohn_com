@@ -28,10 +28,10 @@ export default function Hero({
   children,
 }) {
   return (
-    <Container maxW="960px">
+    <Container maxW="960px" my="5rem">
       <MotionVStack
         textAlign="center"
-        py="5rem"
+        
         spacing={["1rem", null, "2rem"]}
         minH={minH}
         maxW={maxW || "700px"}

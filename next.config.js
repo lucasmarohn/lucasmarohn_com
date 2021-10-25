@@ -4,24 +4,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 const nextConfig = {
-  mode: 'production',
-  future: {
-    webpack5: true,
-  },
   images: {
-    domains: ['voidmade.local','staging.emergence.design', 'lucasmarohn.com' 'app-60708904c1ac183264fb7a04.closte.com'],
-  },
-  pwa: {
-    disable: process.env.NODE_ENV === 'development',
-    register: true,
-    dest: 'public'
-  },
-  devIndicators: {
-    autoPrerender: false,
-  },
-  optimization: {
-    usedExports: true,
+    domains: ['voidmade.local','staging.lucasmarohn.com', 'lucasmarohn.com', 'app-60708904c1ac183264fb7a04.closte.com'],
   },
 };
 
-module.exports = withBundleAnalyzer( withPWA(nextConfig) );
+module.exports = nextConfig

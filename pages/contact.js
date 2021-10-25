@@ -14,115 +14,43 @@ import {
 import { gravityFormData } from "../pages/api/graphql/contact-form";
 import Hero from "../components/blocks/hero";
 import SectionWrap from "../components/partials/section-wrap";
-import { NextSeo } from 'next-seo'
+import { NextSeo } from "next-seo";
+import ContactForm from "../components/contact-form";
 const WP_SITE_URL = process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL;
 
-
-export default function Contact({ gFormData }) {
-  const [formSubmitted, setFormSubmitted] = useState(false)
-  const [formSubmitting, setFormSubmitting] = useState(false)
-  const formRef = useRef();
-  const fields = gFormData.formFields.nodes;
-  const printField = (field) => {
-    switch (field.type) {
-      case "textarea":
-        return (
-          <Textarea
-            name={`input_${field.id}`}
-            id={`input_${field.id}`}
-            type={field.type}
-            size="lg"
-            bg="white"
-          />
-        );
-      default:
-        return (
-          <Input
-            name={`input_${field.id}`}
-            id={`input_${field.id}`}
-            type={field.type}
-            size="lg"
-            bg="white"
-          />
-        );
-    }
-  };
-  async function submitForm(e) {
-    e.preventDefault();
-    setFormSubmitting(true)
-    setTimeout(()=> {
-      const formData = new FormData(formRef.current)
-      console.log('formData', formData)
-      const res = fetch(`${WP_SITE_URL}/wp-json/gf/v2/forms/1/submissions`,{
-        method: 'POST',
-        body: formData
-      })
-      .then(response => response.json())
-      .then(response => {
-        console.log(response)
-        if(response.is_valid) {
-          setFormSubmitted(true)
-        }
-      })
-      .catch((error)=> {console.error('error', error)})
-    }, 500)
-  }
+export default function Contact({}) {
   return (
     <Layout>
       <NextSeo
-          title={`Contact Emergence`}
-          description="Ready to help your customer win the day? Let's talk."
-          openGraph={{
-            title: `Contact Emergence`,
-            description: "Ready to help your customer win the day? Let's talk.",
-            site_name: 'Emergence',
-          }}
-    />
+        title={`Contact Lucas Marohn`}
+        description="Ready to help your customer win the day? Let's talk."
+        openGraph={{
+          title: `Contact Lucas Marohn`,
+          description: "Ready to help your customer win the day? Let's talk.",
+          site_name: "Lucas Marohn",
+        }}
+      />
 
+      <Hero
+        headline="START A CONVERSATION"
+        title="I'm always happy to chat"
+        description="I'll reach out via email initially, from there we can schedule a phone call or a grab virtual coffee"
+      />
 
-      <Hero headline="START A CONVERSATION" title="Let's build something beautiful together" />
-
-      {fields && (
-        <SectionWrap my="0">
+      <SectionWrap my="0">
         <Container maxW="70rem">
-          <Box bg={useColorModeValue('white', 'gray.700')} padding={['2rem', '5rem']}>
-          {!formSubmitted && <form
-            onSubmit={submitForm}
-            ref={formRef}
-            action={`//voidmade.local/wp-json/gf/v2/forms/${fields.id}/submissions`}
-            method="post"
+          <Box
+            bg={useColorModeValue("white", "gray.700")}
+            padding={["2rem", "5rem"]}
+            boxShadow={useColorModeValue(
+              "0 .5rem 1rem rgba(0,50,100,.2)",
+              null
+            )}
           >
-            <VStack align="start" spacing="2rem">
-              {fields.map((field) => {
-                return (
-                  <FormControl key={field.id} id={field.id} isDisabled={formSubmitted || formSubmitting} isRequired>
-                    <FormLabel htmlFor={field.id}>{field.label}</FormLabel>
-                    {printField(field)}
-                  </FormControl>
-                );
-              })}
-              
-              <Button type="submit" variant="primary" disabled={formSubmitted || formSubmitting}>
-                Contact Us
-              </Button>
-              
-            </VStack>
-          </form>}
-          {formSubmitted && <Box textAlign="center">Thanks for reaching out. Your message has been sent successfully.</Box>}
+            <ContactForm formId="contact-page" />{" "}
           </Box>
         </Container>
-        </SectionWrap>
-      )}
-      
+      </SectionWrap>
     </Layout>
   );
-}
-
-export async function getStaticProps(context, preview) {
-  const gFormData = await gravityFormData();
-  return {
-    props: {
-      gFormData,
-    },
-  };
 }
