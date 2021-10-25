@@ -8,7 +8,12 @@ import { NextSeo } from "next-seo";
 import { Chakra } from "../src/Chakra";
 
 function MyApp({ Component, pageProps }) {
-
+  Router.onRouteChangeComplete = () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+    });
+  };
   return (
     <Chakra cookies={pageProps.cookies}>
       <AnimateSharedLayout>

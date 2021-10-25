@@ -38,7 +38,7 @@ export default function Team({ caseStudyList }) {
       url: "https://instagram.com/nicodewet",
     },
     {
-      name: "Aiden",
+      name: "Aiden Jones",
       imageSrc: "/images/friends/aiden.png",
       url: "https://www.instagram.com/illuskate",
     },
