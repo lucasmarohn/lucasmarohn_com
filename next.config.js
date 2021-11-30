@@ -7,6 +7,15 @@ const nextConfig = {
   images: {
     domains: ['voidmade.local','staging.lucasmarohn.com', 'lucasmarohn.com', 'app-60708904c1ac183264fb7a04.closte.com'],
   },
+  async redirects() {
+    return [
+      {
+        source: '/midtown',
+        destination: '/work/midtown',
+        permanent: true,
+      },
+    ]
+  }
 };
 
 module.exports = nextConfig
