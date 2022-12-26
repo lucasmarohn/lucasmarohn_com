@@ -47,12 +47,12 @@ export default function Team({ caseStudyList }) {
     <Layout>
       <NextSeo
         title={`About Lucas Marohn`}
-        description="We’re a team of multidisciplinary story tellers and problem solvers"
+        description="Lucas Marohn is the Senior UX Designer and Developer for Universal Music Group 🌎 where he defines the UX approach for 800+ web properties and builds websites for UMG’s AAA artists like Justin Bieber"
         canonical={`https://lucasmarohn.com/about`}
         openGraph={{
           title: `About Lucas Marohn`,
           description:
-            "We’re a team of multidisciplinary story tellers and problem solvers",
+            "Lucas Marohn is the Senior UX Designer and Developer for Universal Music Group 🌎 where he defines the UX approach for 800+ web properties and builds websites for UMG’s AAA artists like Justin Bieber",
           site_name: "Lucas Marohn",
         }}
       />
@@ -60,29 +60,53 @@ export default function Team({ caseStudyList }) {
       <Hero
         maxW="900"
         headline="About Lucas Marohn"
-        title="I'm a digital designer, web developer, and creative problem solver"
+        title="I am product-focused with an end-user centered approach: the glue between brand strategy, UI/UX design, front end performance optimization, and marketing analytics"
+        titleVariant="h1"
         description="SLO CA → PDX OR"
+        maxW="960px"
       />
 
       <SectionWrap pt={0}>
-        <Container>
-          <SimpleGrid
-            columns={[1, null, null, 2]}
-            gap="3rem"
-            alignItems="center"
-            gridAutoFlow="dense"
-            w="100%"
-          >
-            <AspectRatio ratio={1}>
-              <Image
-                src="/images/lucas.jpg"
-                layout="fill"
-                alt=""
-                objectFit="cover"
-              />
-            </AspectRatio>
+        <Container >
+          <SimpleGrid gap="3rem" columns={1}>
+            <SimpleGrid
+              columns={[2, null, 3]}
+              gap={['1rem', null, "3rem"]}
+              alignItems="center"
+              w="100%"
+            >
+              <AspectRatio ratio={5/7} gridColumnStart={1} gridColumnEnd={[3, null, 1]}>
+                <Image
+                  src="/images/hike.png"
+                  layout="fill"
+                  alt="My hometown of San Luis obispo, California"
+                  title="My hometown of San Luis obispo, California"
+                  objectFit="cover"
+                />
+              </AspectRatio>
 
-            <VStack maxW="600px" spacing="2rem" align="start">
+              <AspectRatio ratio={5/7}>
+                <Image
+                  src="/images/louvre.jpg"
+                  layout="fill"
+                  alt="Exploring baroque renaissance art at the Lourve in Paris, France"
+                  title="Exploring baroque renaissance art at the Lourve in Paris, France"
+                  objectFit="cover"
+                />
+              </AspectRatio>
+
+              <AspectRatio ratio={5/7}>
+                <Image
+                  src="/images/style.png"
+                  layout="fill"
+                  alt="I love fashion, art, and culture"
+                  title="I love fashion, art, and culture"
+                  objectFit="cover"
+                />
+              </AspectRatio>
+            </SimpleGrid>
+
+            <VStack maxW="600px" mx="auto" spacing="2rem" align="start">
               <Text>
                 You'll run into me hiking, gliding through the twisties on two
                 wheels—and when the weather is juuust right—dashing through the
@@ -103,7 +127,7 @@ export default function Team({ caseStudyList }) {
 
               <Text>Think we'd get along? Say hello!</Text>
             </VStack>
-          </SimpleGrid>
+</SimpleGrid>
         </Container>
       </SectionWrap>
 
@@ -112,7 +136,7 @@ export default function Team({ caseStudyList }) {
           <VStack align="center" spacing="2rem" w="100%">
             <VStack>
             <Heading variant="h6" textAlign="center">Ride or Die</Heading>
-            <Heading textAlign="center">The Squad</Heading>
+            <Heading textAlign="center">My Squad</Heading>
             </VStack>
             <SimpleGrid columns={[1, 2, 4]} gap={6} w="100%">
               {friends.map((friend) => (

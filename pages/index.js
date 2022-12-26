@@ -29,10 +29,12 @@ export default function Work({caseStudyList}) {
     />
       <Hero
         maxW="900"
-        headline="LUCAS MAROHN"
-        title="I solve business challenges through comprehensive design, development, and marketing solutions"
+        headline="Sr. UI/UX Designer &amp; Developer"
+        title="Lucas Marohn is the Senior UX Designer and Developer for Universal Music Group 🌎 where he defines the UX approach for 800+ web properties and builds websites for UMG’s AAA artists like Justin Bieber"
+        titleVariant="h1"
+        maxW="1200px"
       />
-        <Container>
+        <Container mb={24}>
         <Grid
           templateColumns={["100%"]}
           alignItems="stretch"

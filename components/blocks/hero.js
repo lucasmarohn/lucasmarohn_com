@@ -21,14 +21,15 @@ const MotionButtonGroup = motion(ButtonGroup);
 export default function Hero({
   headline,
   title,
+  titleVariant,
   description,
   button,
-  maxW,
+  maxW = "960px",
   minH,
   children,
 }) {
   return (
-    <Container maxW="960px" my="5rem">
+    <Container my="5rem">
       <MotionVStack
         textAlign="center"
         
@@ -50,7 +51,7 @@ export default function Hero({
           <MotionHeading
             variants={fadeUpIn}
             as="h1"
-            variant="h1"
+            variant={titleVariant || "h1"}
             marginTop="1rem !important"
           >
             {printSpans(splitText(title))}

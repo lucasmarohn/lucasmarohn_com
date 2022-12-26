@@ -148,6 +148,9 @@ const theme = {
         fontFamily: "'SpaceGrotesk'",
       }),
       sizes: {
+        "medium": {
+          fontSize: ["16px", null, "20px"],
+        },
         "3xl": {
           fontSize: ["18px", "20px", "22px"],
           color: "red",
@@ -189,6 +192,10 @@ const theme = {
         },
         h3: (props) => ({
           fontSize: [24, 28, 32, 40],
+          color: props.colorMode !== "dark" ? "gray.700" : "gray.100",
+        }),
+        h4: (props) => ({
+          fontSize: [16,24,28],
           color: props.colorMode !== "dark" ? "gray.700" : "gray.100",
         }),
         h6: (props) => ({
