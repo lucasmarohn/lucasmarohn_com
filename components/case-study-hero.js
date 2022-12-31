@@ -89,7 +89,7 @@ export function CaseStudyHeroDesktop({
         >
           <MotionVStack align="left" layoutId={`cs-text-vstack-${layoutIdSuffix}`}>
             {headline && (
-              <Heading variant="h6" as="span" layoutId={`cs-headline-${layoutIdSuffix}`}>
+              <Heading variant="h6" as="h1" layoutId={`cs-headline-${layoutIdSuffix}`}>
                 {headline}
               </Heading>
             )}
@@ -97,6 +97,7 @@ export function CaseStudyHeroDesktop({
               layoutId={`cs-title-${layoutIdSuffix}`}
               size="2xl"
               w="100%"
+              as="h2"
               layout="position"
             >
               {title}
