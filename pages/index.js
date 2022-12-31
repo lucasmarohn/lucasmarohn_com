@@ -30,7 +30,7 @@ export default function Work({caseStudyList}) {
       <Hero
         maxW="900"
         headline="Sr. UI/UX Designer &amp; Developer"
-        title="Lucas Marohn is the Senior UX Designer and Developer for Universal Music Group 🌎 where he defines the UX approach for 800+ web properties and builds websites for UMG’s AAA artists like Justin Bieber"
+        title="Lucas Marohn is the Senior UX Designer and Developer for Universal Music Group 🌎 where he defines the UX approach for several hundred web properties and builds websites for icons like Justin Bieber"
         titleVariant="h1"
         maxW="1200px"
       />
@@ -45,7 +45,7 @@ export default function Work({caseStudyList}) {
           {caseStudyList && caseStudyList.map(({item}, index) => 
           <SectionWrap my="0" key={item.databaseId}>
             <CaseStudyItem
-              
+              index={index}
               animate="visible"
               variants={fadeUpIn}
               headline={item.acf_project.headline}

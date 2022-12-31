@@ -38,6 +38,7 @@ export default function CaseStudyItem({
   reverse,
   headline,
   thumbImage = null,
+  index
 }) {
   return (
     <CaseStudyItemDesktop
@@ -53,6 +54,7 @@ export default function CaseStudyItem({
       headline={headline}
       reverse={reverse}
       thumbImage={thumbImage}
+      index={index}
     />
   );
 }
@@ -69,6 +71,7 @@ export function CaseStudyItemDesktop({
   transition,
   headline,
   thumbImage = null,
+  index
 }) {
   const bgColor = useColorModeValue("white", "gray.700");
   return (
@@ -159,6 +162,7 @@ export function CaseStudyItemDesktop({
                   srcSet={thumbImage?.srcSet}
                   layout="fill"
                   objectFit="cover"
+                  priority={index === 0}
                   alt={thumbImage?.altText}
                 />
               ) : (
@@ -253,7 +257,7 @@ export function CaseStudyItemMobile({
           >
             <AspectRatio ratio={16 / 8} maxH="100vh" w="100%" zIndex="0">
               {thumbImage?.sourceUrl ? (
-                <Image src={thumbImage?.sourceUrl} srcSet={thumbImage?.srcSet} alt={thumbImage?.altText} layout="fill" objectFit="cover" />
+                <Image src={thumbImage?.sourceUrl} srcSet={thumbImage?.srcSet} alt={thumbImage?.altText} layout="fill" objectFit="cover" priority={index === 0} />
               ) : (
                 <Box bg="gray.100" />
               )}

@@ -199,7 +199,7 @@ const theme = {
           color: props.colorMode !== "dark" ? "gray.700" : "gray.100",
         }),
         h6: (props) => ({
-          fontWeight: 400,
+          fontWeight: 600,
           letterSpacing: ".2em",
           color:
             props.colorMode !== "dark"
