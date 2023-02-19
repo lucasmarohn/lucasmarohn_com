@@ -30,18 +30,20 @@ export default function Columns({ title, columns, maxColumns }) {
           </Box>
         );
       case "Project_AcfProject_ContentSections_Columns_SingleColumn_Video":
-        const file = singleCol?.colVideoMp4
+        const file = singleCol?.colVideoMp4?.mediaItemUrl
         const embed = singleCol?.colVideoContent
         if(file) {
             return <VideoFile aspectRatio={100 / singleCol.colAspectRatio} posterUrl={singleCol?.colVideoCover?.sourceUrl} mp4Url={singleCol?.colVideoMp4?.mediaItemUrl} />
         } else if( embed ) {
           const videoInfo = getVideoId(embed)
-          switch( videoInfo.service ) {
+          switch( videoInfo?.service ) {
             case 'youtube': 
               return (
               <AspectRatio ratio={16 / 9}>
                 <iframe width="560" height="315" src={`https://www.youtube.com/embed/${videoInfo.id}`} frameBorder="0" allowFullScreen></iframe>
               </AspectRatio>)
+              break;
+            default: return null;
           } 
         } else {
           return null
