@@ -31,10 +31,10 @@ export default function Columns({ title, columns, maxColumns }) {
         );
       case "Project_AcfProject_ContentSections_Columns_SingleColumn_Video":
         return <VideoBlock 
-        mp4Url={singleCol?.colVideoMp4} 
-        content={singleCol?.colVideoContent} 
-        cover={singleCol?.colVideoCover?.sourceUrl} 
-        aspectRatio={singleCol?.colAspectRatio} />
+          mp4Url={singleCol?.colVideoMp4} 
+          content={singleCol?.colVideoContent} 
+          cover={singleCol?.colVideoCover?.sourceUrl} 
+          aspectRatio={singleCol?.colAspectRatio} />
       default:
         return (
           <Box>

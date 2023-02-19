@@ -4,7 +4,8 @@ import getVideoId from 'get-video-id'
 export const VideoBlock = ({ aspectRatio, cover, mp4Url, content}) => {
   const ratio = aspectRatio && aspectRatio > 0 ? 100 / aspectRatio : 16 / 9
 
-  if (mp4Url && mp4Url.mediaItemUrl !== null) {
+  if (mp4Url && mp4Url.mediaItemUrl) {
+    // console.log(mp4Url.mediaItemUrl)
     return (
       <Box w="100%">
         <AspectRatio ratio={ratio}>
@@ -24,6 +25,7 @@ export const VideoBlock = ({ aspectRatio, cover, mp4Url, content}) => {
     )
   }
   else if(content) {
+    // console.log('content', content)
     const { id, service } = getVideoId(content)
     if(service == 'youtube') {
       return (
