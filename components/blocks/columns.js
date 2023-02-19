@@ -5,7 +5,7 @@ import WPImage from "../partials/wp-image";
 
 import { motion } from 'framer-motion'
 import { stagger, fadeUpIn } from '../../src/utils/framer-variants'
-import { VideoFile } from "./video-file";
+import { VideoBlock } from "./VideoBlock";
 
 import getVideoId from 'get-video-id'
 
@@ -30,16 +30,11 @@ export default function Columns({ title, columns, maxColumns }) {
           </Box>
         );
       case "Project_AcfProject_ContentSections_Columns_SingleColumn_Video":
-        const file = singleCol?.colVideoMp4?.mediaItemUrl
-        const embed = singleCol?.colVideoContent
-
-        console.log('file', file, embed) 
-
-        if(file) {
-          return <VideoFile aspectRatio={100 / singleCol?.colAspectRatio} posterUrl={singleCol?.colVideoCover?.sourceUrl} mp4Url={singleCol?.colVideoMp4?.mediaItemUrl} />
-        } 
-        return null;
-
+        return <VideoBlock 
+        mp4Url={singleCol?.colVideoMp4} 
+        content={singleCol?.colVideoContent} 
+        cover={singleCol?.colVideoCover?.sourceUrl} 
+        aspectRatio={singleCol?.colAspectRatio} />
       default:
         return (
           <Box>
