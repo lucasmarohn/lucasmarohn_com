@@ -34,8 +34,7 @@ export default function Columns({ title, columns, maxColumns }) {
         const embed = singleCol?.colVideoContent
         if(file) {
             return <VideoFile aspectRatio={100 / singleCol.colAspectRatio} posterUrl={singleCol?.colVideoCover?.sourceUrl} mp4Url={singleCol?.colVideoMp4?.mediaItemUrl} />
-        }
-        if( embed ) {
+        } else if( embed ) {
           const videoInfo = getVideoId(embed)
           switch( videoInfo.service ) {
             case 'youtube': 
@@ -43,9 +42,11 @@ export default function Columns({ title, columns, maxColumns }) {
               <AspectRatio ratio={16 / 9}>
                 <iframe width="560" height="315" src={`https://www.youtube.com/embed/${videoInfo.id}`} frameBorder="0" allowFullScreen></iframe>
               </AspectRatio>)
-          }
-          
+          } 
+        } else {
+          return null
         }
+        break;
 
       default:
         return (
