@@ -1,22 +1,11 @@
-import Head from "next/head";
 import Layout from "../components/layout";
 import Container from "../components/container";
-import { Box, useColorModeValue, VStack } from "@chakra-ui/react";
-import { useRef, useState } from "react";
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  Textarea,
-  Button,
-} from "@chakra-ui/react";
+import { Box, useColorModeValue } from "@chakra-ui/react";
 
-import { gravityFormData } from "../pages/api/graphql/contact-form";
 import Hero from "../components/blocks/hero";
 import SectionWrap from "../components/partials/section-wrap";
 import { NextSeo } from "next-seo";
 import ContactForm from "../components/contact-form";
-const WP_SITE_URL = process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL;
 
 export default function Contact({}) {
   return (

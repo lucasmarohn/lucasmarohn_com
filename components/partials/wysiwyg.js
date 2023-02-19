@@ -65,7 +65,7 @@ export default function Wysiwyg({ html, color = undefined }) {
           </Heading>
         );
       }
-      if (domNode.attribs && domNode?.attribs?.class?.includes('headline') ) {
+      if (domNode.attribs && domNode?.attribs?.class?.includes('headline') || domNode.name === 'h6') {
         const props = attributesToProps(domNode.attribs);
         return (
           <Heading

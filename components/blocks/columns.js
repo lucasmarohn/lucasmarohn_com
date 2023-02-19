@@ -1,15 +1,19 @@
 import Container from "../container";
-import { Grid, Box, AspectRatio } from "@chakra-ui/react";
+import { Grid, Box, AspectRatio, BreadcrumbLink, VStack } from "@chakra-ui/react";
 import Wysiwyg from "../partials/wysiwyg";
 import WPImage from "../partials/wp-image";
 
 import { motion } from 'framer-motion'
 import { stagger, fadeUpIn } from '../../src/utils/framer-variants'
+import { VideoFile } from "./video-file";
+
+import getVideoId from 'get-video-id'
 
 const MotionGrid = motion(Grid)
 const MotionDiv = motion('span')
 
-export default function Columns({ columns, maxColumns }) {
+export default function Columns({ title, columns, maxColumns }) {
+  
   const printColumn = (singleCol) => {
     switch (singleCol.fieldGroupName) {
       case "Project_AcfProject_ContentSections_Columns_SingleColumn_ColImage":
@@ -26,23 +30,24 @@ export default function Columns({ columns, maxColumns }) {
           </Box>
         );
       case "Project_AcfProject_ContentSections_Columns_SingleColumn_Video":
-        return (
-          <Box w="100%">
-            <AspectRatio ratio={100 / singleCol.colAspectRatio }>
-              <video
-                poster={singleCol?.colVideoCover?.sourceUrl}
-                loop
-                autoPlay="true"
-                muted
-              >
-                <source
-                  type="video/mp4"
-                  src={singleCol.colVideoMp4.mediaItemUrl}
-                />
-              </video>
-            </AspectRatio>
-          </Box>
-        );
+        console.log('video', singleCol)
+        const file = singleCol.colVideoMp4
+        const embed = singleCol.colVideoContent
+        if(file) {
+            return <VideoFile aspectRatio={100 / singleCol.colAspectRatio} posterUrl={singleCol?.colVideoCover?.sourceUrl} mp4Url={singleCol?.colVideoMp4?.mediaItemUrl} />
+        }
+        if( embed ) {
+          const videoInfo = getVideoId(embed)
+          switch( videoInfo.service ) {
+            case 'youtube': 
+              return (
+              <AspectRatio ratio={16 / 9}>
+                <iframe width="560" height="315" src={`https://www.youtube.com/embed/${videoInfo.id}`} frameborder="0" allowfullscreen></iframe>
+              </AspectRatio>)
+          }
+          
+        }
+
       default:
         return (
           <Box>

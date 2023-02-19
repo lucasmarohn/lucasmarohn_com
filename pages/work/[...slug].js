@@ -27,8 +27,10 @@ export default function CaseStudy({ data }) {
       case "Project_AcfProject_ContentSections_BasicText":
         return <BasicText text={section.basicText} />;
       case "Project_AcfProject_ContentSections_Columns":
+        console.log('columns', section)
         return (
           <Columns
+            title={section.columnsTitle}
             maxColumns={section.maxColumns}
             columns={section.singleColumn}
           />
@@ -61,7 +63,7 @@ export default function CaseStudy({ data }) {
         title={data.title}
         intro={data.excerpt}
         link={`/work/${data.slug}`}
-        thumbImage={data?.featuredImage.node}
+        thumbImage={data?.featuredImage?.node}
         thumbVideoMp4={data?.acf_project?.videoMp4}
         layout="position"
       />
