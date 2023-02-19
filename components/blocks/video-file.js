@@ -1,6 +1,8 @@
 import { AspectRatio, Box } from "@chakra-ui/react"
 
 export const VideoFile = ({ aspectRatio, posterUrl, mp4Url}) => {
+  if(!mp4Url) return null 
+  
   return (
     <Box w="100%">
       <AspectRatio ratio={aspectRatio}>
