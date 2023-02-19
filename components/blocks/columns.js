@@ -32,8 +32,11 @@ export default function Columns({ title, columns, maxColumns }) {
       case "Project_AcfProject_ContentSections_Columns_SingleColumn_Video":
         const file = singleCol?.colVideoMp4?.mediaItemUrl
         const embed = singleCol?.colVideoContent
+
+        console.log('file', file, embed) 
+
         if(file) {
-            return <VideoFile aspectRatio={100 / singleCol.colAspectRatio} posterUrl={singleCol?.colVideoCover?.sourceUrl} mp4Url={singleCol?.colVideoMp4?.mediaItemUrl} />
+            return <VideoFile aspectRatio={100 / singleCol?.colAspectRatio} posterUrl={singleCol?.colVideoCover?.sourceUrl} mp4Url={singleCol?.colVideoMp4?.mediaItemUrl} />
         } else if( embed ) {
           const videoInfo = getVideoId(embed)
           switch( videoInfo?.service ) {
