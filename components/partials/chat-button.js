@@ -34,7 +34,7 @@ export const ChatButton = () => {
         color: "gray.900"
       }}
     >
-      <Box as="span" className="label" transform="translateY(1px)">Say Hello</Box>
+      <Box as="span" className="label" transform="translateY(1px)">Work with us</Box>
     </Button>
   </Link>
 }

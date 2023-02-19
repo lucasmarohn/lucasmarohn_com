@@ -12,6 +12,8 @@ export default class Document extends NextDocument {
           gtag('js', new Date());
           gtag('config', 'G-SVBSPMP6Z9');`}}>
         </script>
+        <link rel="icon" type="image/x-icon" href="/favicon-white.png" media="(prefers-color-scheme: light)" />
+        <link rel="icon" type="image/x-icon" href="/favicon-black.png" media="(prefers-color-scheme: dark)" />
         <meta name="facebook-domain-verification" content="sk6gv9b2jf204wlc3jdqxqvbflutu2" />
 
         </Head>
