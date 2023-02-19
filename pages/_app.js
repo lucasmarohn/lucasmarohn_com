@@ -20,13 +20,13 @@ function MyApp({ Component, pageProps }) {
         <AnimatePresence exitBeforeEnter>
           <ChakraProvider theme={customTheme}>
             <NextSeo
-              title={`Portfolio of Lucas Marohn - Web Developer`}
+              title={`Portfolio of OUR CONSCIOUS - Web Developer`}
               description="Harnessing the power of story, empathy, and design to help businesses engage with their audience in a meaningful way and drive measurable results."
               openGraph={{
-                title: `Lucas Marohn - Web Developer`,
+                title: `OUR CONSCIOUS - Web Developer`,
                 description:
                   "Harnessing the power of story, empathy, and design to help businesses engage with their audience in a meaningful way and drive measurable results.",
-                site_name: "Lucas Marohn",
+                site_name: "OUR CONSCIOUS",
               }}
             />
             <Component {...pageProps} />

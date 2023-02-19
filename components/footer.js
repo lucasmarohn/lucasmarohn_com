@@ -25,8 +25,7 @@ export default function Footer() {
           textAlign={['center','none']}
         >
           <VStack align="left" textAlign={[null, null, "left"]}>
-            <Heading size="md">Lucas Marohn</Heading>
-            <Text fontSize="xs">&copy; 2021 Lucas Marohn</Text>
+            <Text fontSize="sm">&copy; 2023 OUR CONSCIOUS</Text>
           </VStack>
 
           <VStack align={[null, null, "right"]}>
@@ -37,13 +36,7 @@ export default function Footer() {
               fontSize={["sm", null, "lg"]}
             >
               <Link href="/">Home</Link>
-              <Link href="/work">Work</Link>
-              <Link href="/about">About Me</Link>
-              <Link href="/contact">Contact</Link>
             </HStack>
-            <Text fontSize="xs" textAlign={[null, null, "right"]}>
-              Privacy Policy
-            </Text>
           </VStack>
         </Grid>
       </SectionWrap>

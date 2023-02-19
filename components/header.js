@@ -1,23 +1,18 @@
 import { StackDivider, HStack, Grid } from "@chakra-ui/react";
+import Image from 'next/image'
 import {
   Icon,
   Box,
   Flex,
   Button,
   IconButton,
-  Heading,
-  useBreakpointValue,
-  useTheme,
 } from "@chakra-ui/react";
 import { useColorMode, useColorModeValue } from "@chakra-ui/react";
 import {
   BiCollection,
-  BiArrowBack,
-  BiEnvelope,
   BiMoon,
   BiSun,
   BiUserCircle,
-  BiMenu,
 } from "react-icons/bi";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -41,18 +36,8 @@ export default function Header() {
   );
   const router = useRouter();
 
-  const navItems = [
-    {
-      title: "Work",
-      icon: BiCollection,
-      href: "/work",
-    },
-    {
-      title: "About Me",
-      icon: BiUserCircle,
-      href: "/about",
-    },
-  ];
+  const navItems = []
+
   return <HeaderDesktop router={router}
   bg={bg}
   borderColor={borderColor}
@@ -88,15 +73,19 @@ function HeaderDesktop({
         bg={bg}
       >
         <Link href="/" passHref>
-          <Heading
+          <a
             as="a"
             fontSize="22px"
-            className={useColorModeValue('', "gradient-mask-primary")}
             w="auto"
             flexShrink="0"
           >
-            Lucas Marohn
-          </Heading>
+            <Flex align="center" justify="center" filter={useColorModeValue('invert(100%)', 'invert(0%)')}>
+              <Flex flexShrink={0} maxW="50px" mr={3} align="center">
+                <Image src="/images/logo-white.png" width={180} height={140}/>
+              </Flex>
+              <Box fontWeight="bold" color="white" lineHeight="1em" alignSelf="center">OUR <br/>CONSCIOUS</Box>
+            </Flex>
+          </a>
         </Link>
 
         

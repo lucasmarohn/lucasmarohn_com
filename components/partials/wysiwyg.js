@@ -161,7 +161,7 @@ export default function Wysiwyg({ html, color = undefined }) {
       if (
         domNode.attribs &&
         domNode.name === "div" &&
-        domNode.attribs.class.includes("container--wide")
+        domNode?.attribs?.class?.includes("container--wide")
       ) {
         const props = attributesToProps(domNode.attribs);
         return (

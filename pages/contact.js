@@ -22,12 +22,12 @@ export default function Contact({}) {
   return (
     <Layout>
       <NextSeo
-        title={`Contact Lucas Marohn`}
+        title={`Contact OUR CONSCIOUS`}
         description="Ready to help your customer win the day? Let's talk."
         openGraph={{
-          title: `Contact Lucas Marohn`,
+          title: `Contact OUR CONSCIOUS`,
           description: "Ready to help your customer win the day? Let's talk.",
-          site_name: "Lucas Marohn",
+          site_name: "OUR CONSCIOUS",
         }}
       />
 

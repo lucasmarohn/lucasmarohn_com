@@ -16,7 +16,7 @@ export default function Columns({ columns, maxColumns }) {
         return (
           <WPImage
             image={singleCol.colImageContent}
-            withBlur
+            
           />
         );
       case "Project_AcfProject_ContentSections_Columns_SingleColumn_ColWysiwyg":
@@ -28,7 +28,7 @@ export default function Columns({ columns, maxColumns }) {
       case "Project_AcfProject_ContentSections_Columns_SingleColumn_Video":
         return (
           <Box w="100%">
-            <AspectRatio ratio={singleCol.colAspectRatio / 100}>
+            <AspectRatio ratio={100 / singleCol.colAspectRatio }>
               <video
                 poster={singleCol?.colVideoCover?.sourceUrl}
                 loop

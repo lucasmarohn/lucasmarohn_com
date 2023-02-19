@@ -64,6 +64,14 @@ export async function getCaseStudyData(slug, preview) {
           poster {
             ${imageFragment}
           }
+          videoMp4 {
+            mediaItemUrl
+            altText
+            mediaDetails {
+              height
+              width
+            }
+          }
           contentSections {
             ... on Project_AcfProject_ContentSections_BasicText {
               backgroundColor

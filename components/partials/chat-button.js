@@ -35,11 +35,6 @@ export const ChatButton = () => {
       }}
     >
       <Box as="span" className="label" transform="translateY(1px)">Say Hello</Box>
-      <Box as="span" className="typing" transform="translateY(1px)">
-        <Box as="span" className="circle" bg={useColorModeValue('brand.primary.400', 'white')}></Box>
-        <Box as="span" className="circle" bg={useColorModeValue('brand.primary.400', 'white')}></Box>
-        <Box as="span" className="circle" bg={useColorModeValue('brand.primary.400', 'white')}></Box>
-      </Box>
     </Button>
   </Link>
 }

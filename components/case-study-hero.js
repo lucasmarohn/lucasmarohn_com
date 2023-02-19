@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
+import { useState } from 'react'
 import {
   Box,
   LinkBox,
@@ -35,6 +35,7 @@ export default function CaseStudyHero({
   reverse,
   headline,
   thumbImage = null,
+  thumbVideoMp4 = null,
 }) {
   return (
     <CaseStudyHeroDesktop
@@ -50,6 +51,7 @@ export default function CaseStudyHero({
       headline={headline}
       reverse={reverse}
       thumbImage={thumbImage}
+      thumbVideoMp4={thumbVideoMp4}
     />
   );
 }
@@ -65,8 +67,19 @@ export function CaseStudyHeroDesktop({
   transition,
   headline,
   thumbImage = null,
+  thumbVideoMp4 = null,
 }) {
   const bgColor = useColorModeValue("white", "gray.600");
+  const [videoLoaded, setVideoLoaded] = useState(false)
+
+  const videoLoadedCallback = () => {
+    
+    setTimeout(() => {
+      setVideoLoaded(true)
+      console.log('video can play')
+    }, 500)
+
+  }
   return (
     
     <MotionBox
@@ -117,17 +130,20 @@ export function CaseStudyHeroDesktop({
             
           >
             <MotionAspectRatio ratio={16 / 9} maxH="100vh" initial={{scale:1.1}} animate={{scale: 1, transition: {delay: .3, duration: 1, ease: 'circOut'}}}>
-              {thumbImage?.sourceUrl ? (
-                <Image
-                  src={thumbImage?.sourceUrl}
-                  srcSet={thumbImage?.srcSet}
-                  layout="fill"
-                  objectFit="cover"
-                  alt={thumbImage?.altText}
-                />
-              ) : (
-                <Box bg="gray.100" />
-              )}
+              <>
+                {thumbVideoMp4?.mediaItemUrl && 
+                  (<video src={thumbVideoMp4.mediaItemUrl} autoPlay={true} muted={true} loop={true} />)
+                }
+                {!thumbVideoMp4?.mediaItemUrl && thumbImage?.sourceUrl && (
+                  <Image
+                    src={thumbImage?.sourceUrl}
+                    srcSet={thumbImage?.srcSet}
+                    layout="fill"
+                    objectFit="cover"
+                    alt={thumbImage?.altText}
+                  />
+                )}
+              </>
             </MotionAspectRatio>
           </MotionBox>
         </Grid>

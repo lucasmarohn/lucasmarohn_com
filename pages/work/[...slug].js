@@ -19,6 +19,7 @@ import CaseStudyHero from '../../components/case-study-hero'
 import { NextSeo } from 'next-seo'
 
 export default function CaseStudy({ data }) {
+  console.log(data);
   const layoutIdSuffix = data.databaseId;
   const bgColor = useColorModeValue("white", "gray.700");
   const switchSection = (section) => {
@@ -47,7 +48,7 @@ export default function CaseStudy({ data }) {
       openGraph={{
         title: `Case Study | ${data.title}`,
         description: data.excerpt,
-        site_name: 'Lucas Marohn',
+        site_name: 'OUR CONSCIOUS',
       }}
     />
       <CaseStudyHero
@@ -61,6 +62,7 @@ export default function CaseStudy({ data }) {
         intro={data.excerpt}
         link={`/work/${data.slug}`}
         thumbImage={data?.featuredImage.node}
+        thumbVideoMp4={data?.acf_project?.videoMp4}
         layout="position"
       />
 

@@ -5,7 +5,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const nextConfig = {
   images: {
-    domains: ['voidmade.local','staging.lucasmarohn.com', 'lucasmarohn.com', 'app-60708904c1ac183264fb7a04.closte.com'],
+    domains: ['voidmade.local','staging.lucasmarohn.com', 'lucasmarohn.com', 'app-63a17a82c1ac189bf8119ff0.closte.com'],
   },
   async redirects() {
     return [
