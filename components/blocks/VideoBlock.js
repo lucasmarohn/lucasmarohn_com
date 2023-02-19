@@ -4,7 +4,7 @@ import getVideoId from 'get-video-id'
 export const VideoBlock = ({ aspectRatio, cover, mp4Url, content}) => {
   const ratio = aspectRatio && aspectRatio > 0 ? 100 / aspectRatio : 16 / 9
 
-  if (mp4Url && mp4Url?.mediaItemUrl) {
+  if (mp4Url && mp4Url.mediaItemUrl !== null) {
     return (
       <Box w="100%">
         <AspectRatio ratio={ratio}>

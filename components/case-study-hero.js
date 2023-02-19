@@ -121,7 +121,7 @@ export function CaseStudyHeroDesktop({
           >
             <MotionAspectRatio ratio={16 / 9} maxH="100vh" initial={{scale:1.1}} animate={{scale: 1, transition: {delay: .3, duration: 1, ease: 'circOut'}}}>
               <>
-                {thumbVideoMp4?.mediaItemUrl && 
+                {thumbVideoMp4 && thumbVideoMp4?.mediaItemUrl && 
                   (<video src={thumbVideoMp4.mediaItemUrl} autoPlay={true} muted={true} loop={true} />)
                 }
                 {!thumbVideoMp4?.mediaItemUrl && thumbImage?.sourceUrl && (
