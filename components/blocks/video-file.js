@@ -7,7 +7,7 @@ export const VideoFile = ({ aspectRatio, posterUrl, mp4Url}) => {
         <video
           poster={posterUrl}
           loop
-          autoPlay="true"
+          autoPlay={true}
           muted
         >
           <source

@@ -86,10 +86,6 @@ export function CaseStudyItemDesktop({
       transition={transition}
       zIndex="1"
       role="group"
-
-      whileTap={{
-        scale: 0.99,
-      }}
     >
       <MotionBox boxShadow={useColorModeValue("0 .5rem 1rem rgba(0,50,100,.2)", null)} position="static">
         <Grid templateColumns="100%" alignItems="center" gap={[0]}>
@@ -109,13 +105,13 @@ export function CaseStudyItemDesktop({
               layoutId={`cs-text-vstack-${layoutIdSuffix}`}
             >
               {headline && (
-                <Heading
+                <MotionHeading
                   variant="h6"
                   as="span"
                   layoutId={`cs-headline-${layoutIdSuffix}`}
                 >
                   {headline}
-                </Heading>
+                </MotionHeading>
               )}
               <MotionHeading
                 layoutId={`cs-title-${layoutIdSuffix}`}
@@ -150,9 +146,6 @@ export function CaseStudyItemDesktop({
             <AspectRatio
               ratio={16 / 8}
               maxH="100vh"
-              whileTap={{
-                scale: 1.1
-              }}
               _groupHover={{ transform: "scale(1.05)" }}
               transition="transform .2s ease-out"
             >
@@ -199,14 +192,6 @@ export function CaseStudyItemMobile({
     variants={variants}
     transition={transition}
     layoutId={`cs-text-${layoutIdSuffix}`}
-    // whileHover={{
-    //   scale: useBreakpointValue({ base: 1, sm: 1.02, md: 1 }),
-    //   transition: { duration: 0.1 },
-    // }}
-    // whileTap={{
-    //   scale: 0.975,
-    //   transition: { duration: 0.1 },
-    // }}
     >
       <LinkBox as="article" w="100%" bg={bgColor} zIndex="2">
         <Grid templateColumns="100%" alignItems="center">

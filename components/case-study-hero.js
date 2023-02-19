@@ -70,16 +70,6 @@ export function CaseStudyHeroDesktop({
   thumbVideoMp4 = null,
 }) {
   const bgColor = useColorModeValue("white", "gray.600");
-  const [videoLoaded, setVideoLoaded] = useState(false)
-
-  const videoLoadedCallback = () => {
-    
-    setTimeout(() => {
-      setVideoLoaded(true)
-      console.log('video can play')
-    }, 500)
-
-  }
   return (
     
     <MotionBox
@@ -102,9 +92,9 @@ export function CaseStudyHeroDesktop({
         >
           <MotionVStack align="left" layoutId={`cs-text-vstack-${layoutIdSuffix}`}>
             {headline && (
-              <Heading variant="h6" as="h1" layoutId={`cs-headline-${layoutIdSuffix}`}>
+              <MotionHeading variant="h6" as="h1" layoutId={`cs-headline-${layoutIdSuffix}`}>
                 {headline}
-              </Heading>
+              </MotionHeading>
             )}
             <MotionHeading
               layoutId={`cs-title-${layoutIdSuffix}`}

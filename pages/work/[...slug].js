@@ -19,7 +19,6 @@ import CaseStudyHero from '../../components/case-study-hero'
 import { NextSeo } from 'next-seo'
 
 export default function CaseStudy({ data }) {
-  console.log(data);
   const layoutIdSuffix = data.databaseId;
   const bgColor = useColorModeValue("white", "gray.700");
   const switchSection = (section) => {
@@ -27,7 +26,6 @@ export default function CaseStudy({ data }) {
       case "Project_AcfProject_ContentSections_BasicText":
         return <BasicText text={section.basicText} />;
       case "Project_AcfProject_ContentSections_Columns":
-        console.log('columns', section)
         return (
           <Columns
             title={section.columnsTitle}

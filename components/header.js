@@ -54,7 +54,6 @@ function HeaderDesktop({
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Grid
-      layoutId="nav"
       templateColumns={["1fr auto 1fr"]}
       px={[0, null, null, "1rem"]}
       borderBottom="1px solid"
@@ -73,11 +72,11 @@ function HeaderDesktop({
         bg={bg}
       >
         <Link href="/" passHref>
-          <a
+          <Box
             as="a"
-            fontSize="22px"
+            fontSize="18px"
             w="auto"
-            flexShrink="0"
+            flexShrink={0}
           >
             <Flex align="center" justify="center" filter={useColorModeValue('invert(100%)', 'invert(0%)')}>
               <Flex flexShrink={0} maxW="50px" mr={3} align="center">
@@ -85,7 +84,7 @@ function HeaderDesktop({
               </Flex>
               <Box fontWeight="bold" color="white" lineHeight="1em" alignSelf="center">OUR <br/>CONSCIOUS</Box>
             </Flex>
-          </a>
+          </Box>
         </Link>
 
         
