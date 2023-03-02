@@ -65,7 +65,7 @@ export default function Wysiwyg({ html, color = undefined }) {
           </Heading>
         );
       }
-      if (domNode.attribs && domNode?.attribs?.class?.includes('headline') ) {
+      if (domNode.attribs && ( domNode.name === 'h6' || domNode?.attribs?.class?.includes('headline') )) {
         const props = attributesToProps(domNode.attribs);
         return (
           <Heading
@@ -161,7 +161,7 @@ export default function Wysiwyg({ html, color = undefined }) {
       if (
         domNode.attribs &&
         domNode.name === "div" &&
-        domNode.attribs.class.includes("container--wide")
+        domNode.attribs.class?.includes("container--wide")
       ) {
         const props = attributesToProps(domNode.attribs);
         return (

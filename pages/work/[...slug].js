@@ -60,7 +60,7 @@ export default function CaseStudy({ data }) {
         title={data.title}
         intro={data.excerpt}
         link={`/work/${data.slug}`}
-        thumbImage={data?.featuredImage.node}
+        thumbImage={data?.featuredImage?.node}
         layout="position"
       />
 
