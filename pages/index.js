@@ -30,7 +30,7 @@ export default function Work({caseStudyList}) {
       <Hero
         maxW="900"
         headline="Sr. UI/UX Designer &amp; Developer"
-        title="Lucas Marohn is the Senior UX Designer and Developer for Universal Music Group 🌎 where he develops the UX approach for 1000+ web properties and builds websites for icons like Justin Bieber"
+        title="Lucas Marohn is the Senior UX Designer and Developer for Universal Music Group 🌎"
         titleVariant="h1"
         maxW="1200px"
       />
